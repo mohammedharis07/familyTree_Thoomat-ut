@@ -291,16 +291,15 @@ const mohamedunnyFamily = [
   },
 ]
 
-// Family 2: A T kunjupathumma (Late) & P.K Athakutty (Late) - 147 members
+// Family 2: A T kunjupathumma (Late) & P.K Athakutty (Late) - 147 members (placeholder structure)
 const kunjupathummaFamily = [
-  // Family Heads
   {
     id: "head-2",
     name: "A T kunjupathumma",
     isHead: true,
     generation: 1,
     spouse: "P.K Athakutty",
-    children: ["child2-1", "child2-2", "child2-3", "child2-4", "child2-5"],
+    children: ["child2-1", "child2-2", "child2-3"],
     branch: "A T kunjupathumma (Late) & P.K Athakutty (Late)",
     isDeceased: true,
   },
@@ -310,112 +309,51 @@ const kunjupathummaFamily = [
     isHead: false,
     generation: 1,
     spouse: "A T kunjupathumma",
-    children: ["child2-1", "child2-2", "child2-3", "child2-4", "child2-5"],
+    children: ["child2-1", "child2-2", "child2-3"],
     branch: "A T kunjupathumma (Late) & P.K Athakutty (Late)",
     isDeceased: true,
   },
-
-  // Sample Generation 2 - Children (placeholder data for the largest family)
   {
     id: "child2-1",
     name: "First Child of Kunjupathumma",
     profession: "To be updated",
-    qualification: "To be updated",
-    contact: "To be updated",
     isHead: false,
     generation: 2,
     parentId: "head-2",
-    children: ["grandchild2-1", "grandchild2-2"],
+    children: [],
     branch: "A T kunjupathumma (Late) & P.K Athakutty (Late)",
   },
   {
     id: "child2-2",
     name: "Second Child of Kunjupathumma",
     profession: "To be updated",
-    qualification: "To be updated",
-    contact: "To be updated",
     isHead: false,
     generation: 2,
     parentId: "head-2",
-    children: ["grandchild2-3", "grandchild2-4"],
+    children: [],
     branch: "A T kunjupathumma (Late) & P.K Athakutty (Late)",
   },
   {
     id: "child2-3",
     name: "Third Child of Kunjupathumma",
     profession: "To be updated",
-    qualification: "To be updated",
-    contact: "To be updated",
     isHead: false,
     generation: 2,
     parentId: "head-2",
-    children: ["grandchild2-5", "grandchild2-6"],
-    branch: "A T kunjupathumma (Late) & P.K Athakutty (Late)",
-  },
-  {
-    id: "child2-4",
-    name: "Fourth Child of Kunjupathumma",
-    profession: "To be updated",
-    qualification: "To be updated",
-    contact: "To be updated",
-    isHead: false,
-    generation: 2,
-    parentId: "head-2",
-    children: ["grandchild2-7", "grandchild2-8"],
-    branch: "A T kunjupathumma (Late) & P.K Athakutty (Late)",
-  },
-  {
-    id: "child2-5",
-    name: "Fifth Child of Kunjupathumma",
-    profession: "To be updated",
-    qualification: "To be updated",
-    contact: "To be updated",
-    isHead: false,
-    generation: 2,
-    parentId: "head-2",
-    children: ["grandchild2-9", "grandchild2-10"],
-    branch: "A T kunjupathumma (Late) & P.K Athakutty (Late)",
-  },
-
-  // Sample Generation 3 - Grandchildren (placeholder data)
-  {
-    id: "grandchild2-1",
-    name: "Grandchild 1 of Kunjupathumma",
-    profession: "To be updated",
-    qualification: "To be updated",
-    contact: "To be updated",
-    isHead: false,
-    generation: 3,
-    parentId: "child2-1",
     children: [],
     branch: "A T kunjupathumma (Late) & P.K Athakutty (Late)",
   },
-  {
-    id: "grandchild2-2",
-    name: "Grandchild 2 of Kunjupathumma",
-    profession: "To be updated",
-    qualification: "To be updated",
-    contact: "To be updated",
-    isHead: false,
-    generation: 3,
-    parentId: "child2-1",
-    children: [],
-    branch: "A T kunjupathumma (Late) & P.K Athakutty (Late)",
-  },
-  // Additional placeholder members to reach closer to 147 total
-  // (In a real implementation, you would have the actual family data)
 ]
 
-// Family 3: A T Pathayu (Late) & Weetiparambil Ayyutty (Late) - 50 members
+// Family 3: A T Pathayu (Late) & Weetiparambil Ayyutty (Late) - 50 members (placeholder structure)
 const pathayuFamily = [
-  // Family Heads
   {
     id: "head-3",
     name: "A T Pathayu",
     isHead: true,
     generation: 1,
     spouse: "Weetiparambil Ayyutty",
-    children: ["child3-1", "child3-2", "child3-3"],
+    children: ["child3-1", "child3-2"],
     branch: "A T Pathayu (Late) & Weetiparambil Ayyutty (Late)",
     isDeceased: true,
   },
@@ -425,86 +363,41 @@ const pathayuFamily = [
     isHead: false,
     generation: 1,
     spouse: "A T Pathayu",
-    children: ["child3-1", "child3-2", "child3-3"],
+    children: ["child3-1", "child3-2"],
     branch: "A T Pathayu (Late) & Weetiparambil Ayyutty (Late)",
     isDeceased: true,
   },
-
-  // Sample Generation 2 - Children (placeholder data)
   {
     id: "child3-1",
     name: "First Child of Pathayu",
     profession: "To be updated",
-    qualification: "To be updated",
-    contact: "To be updated",
     isHead: false,
     generation: 2,
     parentId: "head-3",
-    children: ["grandchild3-1", "grandchild3-2"],
+    children: [],
     branch: "A T Pathayu (Late) & Weetiparambil Ayyutty (Late)",
   },
   {
     id: "child3-2",
     name: "Second Child of Pathayu",
     profession: "To be updated",
-    qualification: "To be updated",
-    contact: "To be updated",
     isHead: false,
     generation: 2,
     parentId: "head-3",
-    children: ["grandchild3-3", "grandchild3-4"],
-    branch: "A T Pathayu (Late) & Weetiparambil Ayyutty (Late)",
-  },
-  {
-    id: "child3-3",
-    name: "Third Child of Pathayu",
-    profession: "To be updated",
-    qualification: "To be updated",
-    contact: "To be updated",
-    isHead: false,
-    generation: 2,
-    parentId: "head-3",
-    children: ["grandchild3-5", "grandchild3-6"],
-    branch: "A T Pathayu (Late) & Weetiparambil Ayyutty (Late)",
-  },
-
-  // Sample Generation 3 - Grandchildren (placeholder data)
-  {
-    id: "grandchild3-1",
-    name: "Grandchild 1 of Pathayu",
-    profession: "To be updated",
-    qualification: "To be updated",
-    contact: "To be updated",
-    isHead: false,
-    generation: 3,
-    parentId: "child3-1",
-    children: [],
-    branch: "A T Pathayu (Late) & Weetiparambil Ayyutty (Late)",
-  },
-  {
-    id: "grandchild3-2",
-    name: "Grandchild 2 of Pathayu",
-    profession: "To be updated",
-    qualification: "To be updated",
-    contact: "To be updated",
-    isHead: false,
-    generation: 3,
-    parentId: "child3-1",
     children: [],
     branch: "A T Pathayu (Late) & Weetiparambil Ayyutty (Late)",
   },
 ]
 
-// Family 4: A T Nafeesakutty & M.A Bappu Moulavi (Late) - 39 members
+// Family 4: A T Nafeesakutty & M.A Bappu Moulavi (Late) - 39 members (placeholder structure)
 const nafeesakuttyFamily = [
-  // Family Heads
   {
     id: "head-4",
     name: "A T Nafeesakutty",
     isHead: true,
     generation: 1,
     spouse: "M.A Bappu Moulavi",
-    children: ["child4-1", "child4-2", "child4-3"],
+    children: ["child4-1", "child4-2"],
     branch: "A T Nafeesakutty & M.A Bappu Moulavi (Late)",
   },
   {
@@ -513,67 +406,34 @@ const nafeesakuttyFamily = [
     isHead: false,
     generation: 1,
     spouse: "A T Nafeesakutty",
-    children: ["child4-1", "child4-2", "child4-3"],
+    children: ["child4-1", "child4-2"],
     branch: "A T Nafeesakutty & M.A Bappu Moulavi (Late)",
     isDeceased: true,
   },
-
-  // Sample Generation 2 - Children (placeholder data)
   {
     id: "child4-1",
     name: "First Child of Nafeesakutty",
     profession: "To be updated",
-    qualification: "To be updated",
-    contact: "To be updated",
     isHead: false,
     generation: 2,
     parentId: "head-4",
-    children: ["grandchild4-1", "grandchild4-2"],
+    children: [],
     branch: "A T Nafeesakutty & M.A Bappu Moulavi (Late)",
   },
   {
     id: "child4-2",
     name: "Second Child of Nafeesakutty",
     profession: "To be updated",
-    qualification: "To be updated",
-    contact: "To be updated",
     isHead: false,
     generation: 2,
     parentId: "head-4",
-    children: ["grandchild4-3", "grandchild4-4"],
-    branch: "A T Nafeesakutty & M.A Bappu Moulavi (Late)",
-  },
-  {
-    id: "child4-3",
-    name: "Third Child of Nafeesakutty",
-    profession: "To be updated",
-    qualification: "To be updated",
-    contact: "To be updated",
-    isHead: false,
-    generation: 2,
-    parentId: "head-4",
-    children: ["grandchild4-5", "grandchild4-6"],
-    branch: "A T Nafeesakutty & M.A Bappu Moulavi (Late)",
-  },
-
-  // Sample Generation 3 - Grandchildren (placeholder data)
-  {
-    id: "grandchild4-1",
-    name: "Grandchild 1 of Nafeesakutty",
-    profession: "To be updated",
-    qualification: "To be updated",
-    contact: "To be updated",
-    isHead: false,
-    generation: 3,
-    parentId: "child4-1",
     children: [],
     branch: "A T Nafeesakutty & M.A Bappu Moulavi (Late)",
   },
 ]
 
-// Family 5: A.T AliKunji (Late) & P.K Kunhipathunni - 22 members
+// Family 5: A.T AliKunji (Late) & P.K Kunhipathunni - 22 members (placeholder structure)
 const aliKunjiFamily = [
-  // Family Heads
   {
     id: "head-5",
     name: "A.T AliKunji",
@@ -593,58 +453,37 @@ const aliKunjiFamily = [
     children: ["child5-1", "child5-2"],
     branch: "A.T AliKunji (Late) & P.K Kunhipathunni",
   },
-
-  // Sample Generation 2 - Children (placeholder data)
   {
     id: "child5-1",
     name: "First Child of AliKunji",
     profession: "To be updated",
-    qualification: "To be updated",
-    contact: "To be updated",
     isHead: false,
     generation: 2,
     parentId: "head-5",
-    children: ["grandchild5-1", "grandchild5-2"],
+    children: [],
     branch: "A.T AliKunji (Late) & P.K Kunhipathunni",
   },
   {
     id: "child5-2",
     name: "Second Child of AliKunji",
     profession: "To be updated",
-    qualification: "To be updated",
-    contact: "To be updated",
     isHead: false,
     generation: 2,
     parentId: "head-5",
-    children: ["grandchild5-3", "grandchild5-4"],
-    branch: "A.T AliKunji (Late) & P.K Kunhipathunni",
-  },
-
-  // Sample Generation 3 - Grandchildren (placeholder data)
-  {
-    id: "grandchild5-1",
-    name: "Grandchild 1 of AliKunji",
-    profession: "To be updated",
-    qualification: "To be updated",
-    contact: "To be updated",
-    isHead: false,
-    generation: 3,
-    parentId: "child5-1",
     children: [],
     branch: "A.T AliKunji (Late) & P.K Kunhipathunni",
   },
 ]
 
-// Family 6: A.T Kunjaisu (Late) & R.V Mohammed Haji (Late) - 52 members
+// Family 6: A.T Kunjaisu (Late) & R.V Mohammed Haji (Late) - 52 members (placeholder structure)
 const kunjaisuFamily = [
-  // Family Heads
   {
     id: "head-6",
     name: "A.T Kunjaisu",
     isHead: true,
     generation: 1,
     spouse: "R.V Mohammed Haji",
-    children: ["child6-1", "child6-2", "child6-3"],
+    children: ["child6-1", "child6-2"],
     branch: "A.T Kunjaisu (Late) & R.V Mohammed Haji (Late)",
     isDeceased: true,
   },
@@ -654,29 +493,34 @@ const kunjaisuFamily = [
     isHead: false,
     generation: 1,
     spouse: "A.T Kunjaisu",
-    children: ["child6-1", "child6-2", "child6-3"],
+    children: ["child6-1", "child6-2"],
     branch: "A.T Kunjaisu (Late) & R.V Mohammed Haji (Late)",
     isDeceased: true,
   },
-
-  // Sample Generation 2 - Children (placeholder data)
   {
     id: "child6-1",
     name: "First Child of Kunjaisu",
     profession: "To be updated",
-    qualification: "To be updated",
-    contact: "To be updated",
     isHead: false,
     generation: 2,
     parentId: "head-6",
-    children: ["grandchild6-1", "grandchild6-2"],
+    children: [],
+    branch: "A.T Kunjaisu (Late) & R.V Mohammed Haji (Late)",
+  },
+  {
+    id: "child6-2",
+    name: "Second Child of Kunjaisu",
+    profession: "To be updated",
+    isHead: false,
+    generation: 2,
+    parentId: "head-6",
+    children: [],
     branch: "A.T Kunjaisu (Late) & R.V Mohammed Haji (Late)",
   },
 ]
 
-// Family 7: A.T Aminakutty (Late) & A.M Bayu (Late) - 29 members
+// Family 7: A.T Aminakutty (Late) & A.M Bayu (Late) - 29 members (placeholder structure)
 const aminakuttyFamily = [
-  // Family Heads
   {
     id: "head-7",
     name: "A.T Aminakutty",
@@ -697,25 +541,30 @@ const aminakuttyFamily = [
     branch: "A.T Aminakutty (Late) & A.M Bayu (Late)",
     isDeceased: true,
   },
-
-  // Sample Generation 2 - Children (placeholder data)
   {
     id: "child7-1",
     name: "First Child of Aminakutty",
     profession: "To be updated",
-    qualification: "To be updated",
-    contact: "To be updated",
     isHead: false,
     generation: 2,
     parentId: "head-7",
-    children: ["grandchild7-1"],
+    children: [],
+    branch: "A.T Aminakutty (Late) & A.M Bayu (Late)",
+  },
+  {
+    id: "child7-2",
+    name: "Second Child of Aminakutty",
+    profession: "To be updated",
+    isHead: false,
+    generation: 2,
+    parentId: "head-7",
+    children: [],
     branch: "A.T Aminakutty (Late) & A.M Bayu (Late)",
   },
 ]
 
-// Family 8: A T Aboobakker (Late) & Rasiya .P.N - 18 members
+// Family 8: A T Aboobakker (Late) & Rasiya .P.N - 18 members (placeholder structure)
 const aboobakkerFamily = [
-  // Family Heads
   {
     id: "head-8",
     name: "A T Aboobakker",
@@ -735,25 +584,30 @@ const aboobakkerFamily = [
     children: ["child8-1", "child8-2"],
     branch: "A T Aboobakker (Late) & Rasiya .P.N",
   },
-
-  // Sample Generation 2 - Children (placeholder data)
   {
     id: "child8-1",
     name: "First Child of Aboobakker",
     profession: "To be updated",
-    qualification: "To be updated",
-    contact: "To be updated",
     isHead: false,
     generation: 2,
     parentId: "head-8",
-    children: ["grandchild8-1"],
+    children: [],
+    branch: "A T Aboobakker (Late) & Rasiya .P.N",
+  },
+  {
+    id: "child8-2",
+    name: "Second Child of Aboobakker",
+    profession: "To be updated",
+    isHead: false,
+    generation: 2,
+    parentId: "head-8",
+    children: [],
     branch: "A T Aboobakker (Late) & Rasiya .P.N",
   },
 ]
 
-// Family 9: A.T Zainba & Abdul Kadar - 25 members
+// Family 9: A.T Zainba & Abdul Kadar - 25 members (placeholder structure)
 const zainbaFamily = [
-  // Family Heads
   {
     id: "head-9",
     name: "A.T Zainba",
@@ -772,25 +626,30 @@ const zainbaFamily = [
     children: ["child9-1", "child9-2"],
     branch: "A.T Zainba & Abdul Kadar",
   },
-
-  // Sample Generation 2 - Children (placeholder data)
   {
     id: "child9-1",
     name: "First Child of Zainba",
     profession: "To be updated",
-    qualification: "To be updated",
-    contact: "To be updated",
     isHead: false,
     generation: 2,
     parentId: "head-9",
-    children: ["grandchild9-1"],
+    children: [],
+    branch: "A.T Zainba & Abdul Kadar",
+  },
+  {
+    id: "child9-2",
+    name: "Second Child of Zainba",
+    profession: "To be updated",
+    isHead: false,
+    generation: 2,
+    parentId: "head-9",
+    children: [],
     branch: "A.T Zainba & Abdul Kadar",
   },
 ]
 
-// Family 10: A T Ibrahim Kutty & Zohra Ibrahim - 16 members
+// Family 10: A T Ibrahim Kutty & Zohra Ibrahim - 16 members (placeholder structure)
 const ibrahimKuttyFamily = [
-  // Family Heads
   {
     id: "head-10",
     name: "A T Ibrahim Kutty",
@@ -809,18 +668,24 @@ const ibrahimKuttyFamily = [
     children: ["child10-1", "child10-2"],
     branch: "A T Ibrahim Kutty & Zohra Ibrahim",
   },
-
-  // Sample Generation 2 - Children (placeholder data)
   {
     id: "child10-1",
     name: "First Child of Ibrahim Kutty",
     profession: "To be updated",
-    qualification: "To be updated",
-    contact: "To be updated",
     isHead: false,
     generation: 2,
     parentId: "head-10",
-    children: ["grandchild10-1"],
+    children: [],
+    branch: "A T Ibrahim Kutty & Zohra Ibrahim",
+  },
+  {
+    id: "child10-2",
+    name: "Second Child of Ibrahim Kutty",
+    profession: "To be updated",
+    isHead: false,
+    generation: 2,
+    parentId: "head-10",
+    children: [],
     branch: "A T Ibrahim Kutty & Zohra Ibrahim",
   },
 ]
@@ -857,14 +722,26 @@ console.log("All 10 families data script loaded successfully with", allFamilyDat
 
 // Log family breakdown with correct names and target counts
 console.log("Family breakdown (Target counts from image):")
-console.log("1. A T Mohamed unny (Late) & P.M Kochu Rabiya: Target 23 members")
-console.log("2. A T kunjupathumma (Late) & P.K Athakutty (Late): Target 147 members")
-console.log("3. A T Pathayu (Late) & Weetiparambil Ayyutty (Late): Target 50 members")
-console.log("4. A T Nafeesakutty & M.A Bappu Moulavi (Late): Target 39 members")
-console.log("5. A.T AliKunji (Late) & P.K Kunhipathunni: Target 22 members")
-console.log("6. A.T Kunjaisu (Late) & R.V Mohammed Haji (Late): Target 52 members")
-console.log("7. A.T Aminakutty (Late) & A.M Bayu (Late): Target 29 members")
-console.log("8. A T Aboobakker (Late) & Rasiya .P.N: Target 18 members")
-console.log("9. A.T Zainba & Abdul Kadar: Target 25 members")
-console.log("10. A T Ibrahim Kutty & Zohra Ibrahim: Target 16 members")
-console.log("Grand Total Target: 421 members")
+console.log("1. A T Mohamed unny (Late) & P.M Kochu Rabiya: Current", mohamedunnyFamily.length, "members (Target: 23)")
+console.log(
+  "2. A T kunjupathumma (Late) & P.K Athakutty (Late): Current",
+  kunjupathummaFamily.length,
+  "members (Target: 147)",
+)
+console.log(
+  "3. A T Pathayu (Late) & Weetiparambil Ayyutty (Late): Current",
+  pathayuFamily.length,
+  "members (Target: 50)",
+)
+console.log(
+  "4. A T Nafeesakutty & M.A Bappu Moulavi (Late): Current",
+  nafeesakuttyFamily.length,
+  "members (Target: 39)",
+)
+console.log("5. A.T AliKunji (Late) & P.K Kunhipathunni: Current", aliKunjiFamily.length, "members (Target: 22)")
+console.log("6. A.T Kunjaisu (Late) & R.V Mohammed Haji (Late): Current", kunjaisuFamily.length, "members (Target: 52)")
+console.log("7. A.T Aminakutty (Late) & A.M Bayu (Late): Current", aminakuttyFamily.length, "members (Target: 29)")
+console.log("8. A T Aboobakker (Late) & Rasiya .P.N: Current", aboobakkerFamily.length, "members (Target: 18)")
+console.log("9. A.T Zainba & Abdul Kadar: Current", zainbaFamily.length, "members (Target: 25)")
+console.log("10. A T Ibrahim Kutty & Zohra Ibrahim: Current", ibrahimKuttyFamily.length, "members (Target: 16)")
+console.log("Current Total:", allFamilyData.length, "members (Target: 421 members)")
