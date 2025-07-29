@@ -1,230 +1,10 @@
-// Family data embedded directly in the script
-const familyData = [
-  // Generation 1 - Family Heads
-  {
-    id: "1",
-    name: "A T Mohamedunny",
-    profession: "",
-    qualification: "",
-    contact: "",
-    isHead: true,
-    generation: 1,
-    parentId: null,
-    spouse: "P.M Kochu Rabiya",
-    children: ["2", "3", "4"],
-    branch: "A T Mohamedunny & P.M Kochu Rabiya",
-    isDeceased: true,
-  },
-  {
-    id: "1-spouse",
-    name: "P.M Kochu Rabiya",
-    profession: "",
-    qualification: "",
-    contact: "",
-    isHead: false,
-    generation: 1,
-    parentId: null,
-    spouse: "A T Mohamedunny",
-    children: ["2", "3", "4"],
-    branch: "A T Mohamedunny & P.M Kochu Rabiya",
-    isDeceased: false,
-  },
-
-  // Generation 2
-  {
-    id: "2",
-    name: "Kunjupathumma",
-    profession: "",
-    qualification: "",
-    contact: "",
-    isHead: false,
-    generation: 2,
-    parentId: "1",
-    spouse: "",
-    children: ["5", "6"],
-    branch: "Kunjupathumma",
-    isDeceased: false,
-  },
-  {
-    id: "3",
-    name: "Pathavu",
-    profession: "",
-    qualification: "",
-    contact: "",
-    isHead: false,
-    generation: 2,
-    parentId: "1",
-    spouse: "",
-    children: ["7"],
-    branch: "Pathavu",
-    isDeceased: false,
-  },
-  {
-    id: "4",
-    name: "Nafeesakutty",
-    profession: "",
-    qualification: "",
-    contact: "",
-    isHead: false,
-    generation: 2,
-    parentId: "1",
-    spouse: "",
-    children: ["8", "9"],
-    branch: "Nafeesakutty",
-    isDeceased: false,
-  },
-
-  // Generation 3
-  {
-    id: "5",
-    name: "Alikunji",
-    profession: "Business",
-    qualification: "",
-    contact: "",
-    isHead: false,
-    generation: 3,
-    parentId: "2",
-    spouse: "",
-    children: ["10"],
-    branch: "Alikunji",
-    isDeceased: false,
-  },
-  {
-    id: "6",
-    name: "Kunjaisu",
-    profession: "",
-    qualification: "",
-    contact: "",
-    isHead: false,
-    generation: 3,
-    parentId: "2",
-    spouse: "",
-    children: ["11"],
-    branch: "Kunjaisu",
-    isDeceased: false,
-  },
-  {
-    id: "7",
-    name: "Aminakutty",
-    profession: "",
-    qualification: "",
-    contact: "",
-    isHead: false,
-    generation: 3,
-    parentId: "3",
-    spouse: "",
-    children: ["12"],
-    branch: "Aminakutty",
-    isDeceased: false,
-  },
-  {
-    id: "8",
-    name: "Aboobacker",
-    profession: "",
-    qualification: "",
-    contact: "",
-    isHead: false,
-    generation: 3,
-    parentId: "4",
-    spouse: "",
-    children: ["13"],
-    branch: "Aboobacker",
-    isDeceased: false,
-  },
-  {
-    id: "9",
-    name: "Zainba",
-    profession: "",
-    qualification: "",
-    contact: "",
-    isHead: false,
-    generation: 3,
-    parentId: "4",
-    spouse: "",
-    children: ["14"],
-    branch: "Zainba",
-    isDeceased: false,
-  },
-
-  // Generation 4 - Sample children
-  {
-    id: "10",
-    name: "Mohammed Ali",
-    profession: "Engineer",
-    qualification: "B.Tech",
-    contact: "+91 9876543210",
-    isHead: false,
-    generation: 4,
-    parentId: "5",
-    spouse: "Fatima",
-    children: [],
-    branch: "Alikunji",
-    isDeceased: false,
-  },
-  {
-    id: "11",
-    name: "Abdul Rahman",
-    profession: "Doctor",
-    qualification: "MBBS",
-    contact: "+91 9876543211",
-    isHead: false,
-    generation: 4,
-    parentId: "6",
-    spouse: "",
-    children: [],
-    branch: "Kunjaisu",
-    isDeceased: false,
-  },
-  {
-    id: "12",
-    name: "Rasheed",
-    profession: "Teacher",
-    qualification: "M.A",
-    contact: "+91 9876543212",
-    isHead: false,
-    generation: 4,
-    parentId: "7",
-    spouse: "Khadija",
-    children: [],
-    branch: "Aminakutty",
-    isDeceased: false,
-  },
-  {
-    id: "13",
-    name: "Ibrahim",
-    profession: "Business",
-    qualification: "B.Com",
-    contact: "+91 9876543213",
-    isHead: false,
-    generation: 4,
-    parentId: "8",
-    spouse: "",
-    children: [],
-    branch: "Aboobacker",
-    isDeceased: false,
-  },
-  {
-    id: "14",
-    name: "Mariam",
-    profession: "Nurse",
-    qualification: "B.Sc Nursing",
-    contact: "+91 9876543214",
-    isHead: false,
-    generation: 4,
-    parentId: "9",
-    spouse: "Yusuf",
-    children: [],
-    branch: "Zainba",
-    isDeceased: false,
-  },
-]
-
 // Global state
 let currentViewMode = "generation"
 let collapsedFamilies = new Set()
 let currentSearchTerm = ""
-let filteredMembers = [...familyData]
-const familyMembers = [...familyData]
+let filteredMembers = []
+let isMobileMenuOpen = false
+let familyData = [] // Declare familyData variable
 
 // Branch color mapping
 const branchColors = [
@@ -240,8 +20,95 @@ const branchColors = [
 
 // Initialize the application
 document.addEventListener("DOMContentLoaded", () => {
+  initializeEventListeners()
+  createDataParticles()
   renderFamilyTree()
 })
+
+// Initialize all event listeners
+function initializeEventListeners() {
+  // Mobile menu toggle
+  const mobileMenuBtn = document.getElementById("mobile-menu-btn")
+  if (mobileMenuBtn) {
+    mobileMenuBtn.addEventListener("click", toggleMobileMenu)
+  }
+
+  // Search functionality
+  const searchInput = document.getElementById("search-input")
+  const mobileSearchInput = document.getElementById("mobile-search-input")
+  const searchClear = document.getElementById("search-clear")
+  const mobileSearchClear = document.getElementById("mobile-search-clear")
+
+  if (searchInput) {
+    searchInput.addEventListener("input", (e) => handleSearch(e.target.value))
+  }
+  if (mobileSearchInput) {
+    mobileSearchInput.addEventListener("input", (e) => handleSearch(e.target.value))
+  }
+  if (searchClear) {
+    searchClear.addEventListener("click", clearSearch)
+  }
+  if (mobileSearchClear) {
+    mobileSearchClear.addEventListener("click", clearSearch)
+  }
+
+  // View mode toggle
+  const viewBtns = document.querySelectorAll(".view-btn, .mobile-view-btn")
+  viewBtns.forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      const mode = e.currentTarget.dataset.mode
+      setViewMode(mode)
+      if (isMobileMenuOpen) {
+        toggleMobileMenu()
+      }
+    })
+  })
+
+  // Expand all buttons
+  const expandAllBtn = document.getElementById("expand-all-btn")
+  const mobileExpandBtn = document.getElementById("mobile-expand-btn")
+
+  if (expandAllBtn) {
+    expandAllBtn.addEventListener("click", () => {
+      toggleAllFamilies()
+    })
+  }
+  if (mobileExpandBtn) {
+    mobileExpandBtn.addEventListener("click", () => {
+      toggleAllFamilies()
+      if (isMobileMenuOpen) {
+        toggleMobileMenu()
+      }
+    })
+  }
+}
+
+// Create animated data particles
+function createDataParticles() {
+  const particlesContainer = document.querySelector(".data-particles")
+  if (!particlesContainer) return
+
+  // Clear existing particles
+  particlesContainer.innerHTML = ""
+
+  // Create 30 particles
+  for (let i = 0; i < 30; i++) {
+    const particle = document.createElement("div")
+    particle.className = "data-particle"
+    particle.style.cssText = `
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: rgba(6, 182, 212, 0.6);
+      border-radius: 50%;
+      animation: ping ${2 + Math.random() * 3}s ease-in-out infinite;
+      animation-delay: ${i * 200}ms;
+      top: ${Math.random() * 100}%;
+      left: ${Math.random() * 100}%;
+    `
+    particlesContainer.appendChild(particle)
+  }
+}
 
 // Utility functions
 function getBranchColorClass(branch) {
@@ -280,15 +147,15 @@ function handleSearch(searchTerm) {
 
   if (currentSearchTerm === "") {
     // No search term, show all members
-    filteredMembers = [...familyMembers]
+    filteredMembers = [...familyData]
     hideSearchInfo()
   } else {
     // Filter members based on search term
-    filteredMembers = familyMembers.filter(
+    filteredMembers = familyData.filter(
       (member) =>
         member.name.toLowerCase().includes(currentSearchTerm) ||
-        member.profession.toLowerCase().includes(currentSearchTerm) ||
-        member.qualification.toLowerCase().includes(currentSearchTerm) ||
+        (member.profession && member.profession.toLowerCase().includes(currentSearchTerm)) ||
+        (member.qualification && member.qualification.toLowerCase().includes(currentSearchTerm)) ||
         member.branch.toLowerCase().includes(currentSearchTerm),
     )
     showSearchInfo()
@@ -299,7 +166,7 @@ function handleSearch(searchTerm) {
 
 function clearSearch() {
   currentSearchTerm = ""
-  filteredMembers = [...familyMembers]
+  filteredMembers = [...familyData]
 
   // Clear both search inputs
   const desktopInput = document.getElementById("search-input")
@@ -357,15 +224,15 @@ function setViewMode(mode) {
   document.querySelectorAll(".mobile-view-btn").forEach((btn) => btn.classList.remove("active"))
 
   if (mode === "generation") {
-    document.querySelector(".view-btn:first-child").classList.add("active")
-    document.querySelector(".mobile-view-btn:first-child").classList.add("active")
+    document.querySelector(".view-btn[data-mode='generation']")?.classList.add("active")
+    document.querySelector(".mobile-view-btn[data-mode='generation']")?.classList.add("active")
   } else {
-    document.querySelector(".view-btn:last-child").classList.add("active")
-    document.querySelector(".mobile-view-btn:last-child").classList.add("active")
+    document.querySelector(".view-btn[data-mode='family']")?.classList.add("active")
+    document.querySelector(".mobile-view-btn[data-mode='family']")?.classList.add("active")
   }
 
   // Show/hide expand all button
-  const expandBtns = document.querySelectorAll(".expand-all-btn, .mobile-expand-btn")
+  const expandBtns = document.querySelectorAll("#expand-all-btn, #mobile-expand-btn")
   expandBtns.forEach((btn) => {
     btn.style.display = mode === "family" ? "flex" : "none"
   })
@@ -389,7 +256,7 @@ function toggleAllFamilies() {
 }
 
 function updateExpandAllButton(text) {
-  const expandBtns = document.querySelectorAll(".expand-all-btn span, .mobile-expand-btn")
+  const expandBtns = document.querySelectorAll("#expand-all-btn span, #mobile-expand-btn")
   expandBtns.forEach((btn) => {
     if (btn.tagName === "SPAN") {
       btn.textContent = text
@@ -413,21 +280,17 @@ function toggleMobileMenu() {
   const mobileMenu = document.getElementById("mobile-menu")
   const menuIcon = document.getElementById("mobile-menu-icon")
 
-  if (mobileMenu.classList.contains("show")) {
-    mobileMenu.classList.remove("show")
-    menuIcon.className = "fas fa-bars"
-  } else {
-    mobileMenu.classList.add("show")
-    menuIcon.className = "fas fa-times"
+  if (mobileMenu && menuIcon) {
+    if (mobileMenu.classList.contains("show")) {
+      mobileMenu.classList.remove("show")
+      menuIcon.className = "fas fa-bars"
+      isMobileMenuOpen = false
+    } else {
+      mobileMenu.classList.add("show")
+      menuIcon.className = "fas fa-times"
+      isMobileMenuOpen = true
+    }
   }
-}
-
-function closeMobileMenu() {
-  const mobileMenu = document.getElementById("mobile-menu")
-  const menuIcon = document.getElementById("mobile-menu-icon")
-
-  mobileMenu.classList.remove("show")
-  menuIcon.className = "fas fa-bars"
 }
 
 // Data manipulation functions
@@ -497,6 +360,8 @@ function renderFamilyTree() {
   const container = document.getElementById("family-tree-container")
   const noResults = document.getElementById("no-results")
 
+  if (!container || !noResults) return
+
   if (filteredMembers.length === 0 && currentSearchTerm !== "") {
     // Show no results message
     container.style.display = "none"
@@ -530,34 +395,34 @@ function renderGenerationView() {
       const groupedMembers = groupSpouses(members)
 
       return `
-            <div class="generation-section">
-                <div class="generation-label">
-                    <div class="generation-badge">
-                        <div class="generation-badge-content">
-                            <i class="fas fa-star"></i>
-                            <span>GENERATION ${generation}</span>
-                            <i class="fas fa-star"></i>
-                        </div>
-                    </div>
-                </div>
-                <div class="members-grid">
-                    ${groupedMembers
-                      .map((memberOrPair) => {
-                        if (Array.isArray(memberOrPair)) {
-                          return `
-                                <div class="spouse-pair">
-                                    ${memberOrPair.map((member) => renderMemberCard(member, true)).join("")}
-                                    <div class="marriage-line"></div>
-                                </div>
-                            `
-                        } else {
-                          return renderMemberCard(memberOrPair)
-                        }
-                      })
-                      .join("")}
-                </div>
+        <div class="generation-section">
+          <div class="generation-label">
+            <div class="generation-badge">
+              <div class="generation-badge-content">
+                <i class="fas fa-star"></i>
+                <span>GENERATION ${generation}</span>
+                <i class="fas fa-star"></i>
+              </div>
             </div>
-        `
+          </div>
+          <div class="members-grid">
+            ${groupedMembers
+              .map((memberOrPair) => {
+                if (Array.isArray(memberOrPair)) {
+                  return `
+                    <div class="spouse-pair">
+                      ${memberOrPair.map((member) => renderMemberCard(member, true)).join("")}
+                      <div class="marriage-line"></div>
+                    </div>
+                  `
+                } else {
+                  return renderMemberCard(memberOrPair)
+                }
+              })
+              .join("")}
+          </div>
+        </div>
+      `
     })
     .join("")
 }
@@ -578,63 +443,63 @@ function renderFamilyView() {
       const isCollapsed = collapsedFamilies.has(head.id)
 
       return `
-            <div class="family-section">
-                <div class="family-header">
-                    <div class="family-title">
-                        <div class="family-title-content">
-                            <i class="fas fa-crown"></i>
-                            <span>${head.name} FAMILY</span>
-                            <i class="fas fa-crown"></i>
-                        </div>
-                    </div>
-                    <button class="family-toggle" onclick="toggleFamilyCollapse('${head.id}')">
-                        <i class="fas fa-chevron-${isCollapsed ? "down" : "up"}"></i>
-                        ${isCollapsed ? "Expand Family" : "Collapse Family"}
-                    </button>
+        <div class="family-section">
+          <div class="family-header">
+            <div class="family-title">
+              <div class="family-title-content">
+                <i class="fas fa-crown"></i>
+                <span>${head.name} FAMILY</span>
+                <i class="fas fa-crown"></i>
+              </div>
+            </div>
+            <button class="family-toggle" onclick="toggleFamilyCollapse('${head.id}')">
+              <i class="fas fa-chevron-${isCollapsed ? "down" : "up"}"></i>
+              ${isCollapsed ? "Expand Family" : "Collapse Family"}
+            </button>
+          </div>
+          
+          ${
+            !isCollapsed
+              ? `
+              <div class="family-content">
+                <div class="family-heads">
+                  <div class="spouse-pair">
+                    ${renderMemberCard(head)}
+                    ${
+                      spouse
+                        ? `
+                        <div class="marriage-line"></div>
+                        ${renderMemberCard(spouse)}
+                      `
+                        : ""
+                    }
+                  </div>
                 </div>
                 
                 ${
-                  !isCollapsed
+                  descendants.length > 0
                     ? `
-                    <div class="family-content">
-                        <div class="family-heads">
-                            <div class="spouse-pair">
-                                ${renderMemberCard(head)}
-                                ${
-                                  spouse
-                                    ? `
-                                    <div class="marriage-line"></div>
-                                    ${renderMemberCard(spouse)}
-                                `
-                                    : ""
-                                }
-                            </div>
-                        </div>
-                        
-                        ${
-                          descendants.length > 0
-                            ? `
-                            <div class="descendants">
-                                ${renderDescendantsByGeneration(descendants)}
-                            </div>
-                        `
-                            : ""
-                        }
+                    <div class="descendants">
+                      ${renderDescendantsByGeneration(descendants)}
                     </div>
-                `
-                    : `
-                    <div class="collapsed-state">
-                        <div class="collapsed-info">
-                            <div class="collapsed-info-content">
-                                <i class="fas fa-eye-slash"></i>
-                                <span>Family tree collapsed • ${descendants.length} members hidden</span>
-                            </div>
-                        </div>
-                    </div>
-                `
+                  `
+                    : ""
                 }
-            </div>
-        `
+              </div>
+            `
+              : `
+              <div class="collapsed-state">
+                <div class="collapsed-info">
+                  <div class="collapsed-info-content">
+                    <i class="fas fa-eye-slash"></i>
+                    <span>Family tree collapsed • ${descendants.length} members hidden</span>
+                  </div>
+                </div>
+              </div>
+            `
+          }
+        </div>
+      `
     })
     .join("")
 }
@@ -656,30 +521,30 @@ function renderDescendantsByGeneration(descendants) {
       const groupedDescendants = groupSpouses(genDescendants)
 
       return `
-            <div class="generation-group">
-                <div class="generation-group-label">
-                    <div class="generation-group-badge">
-                        <span>Generation ${gen}</span>
-                    </div>
-                </div>
-                <div class="members-grid">
-                    ${groupedDescendants
-                      .map((memberOrPair) => {
-                        if (Array.isArray(memberOrPair)) {
-                          return `
-                                <div class="spouse-pair">
-                                    ${memberOrPair.map((member) => renderMemberCard(member, true)).join("")}
-                                    <div class="marriage-line"></div>
-                                </div>
-                            `
-                        } else {
-                          return renderMemberCard(memberOrPair, true)
-                        }
-                      })
-                      .join("")}
-                </div>
+        <div class="generation-group">
+          <div class="generation-group-label">
+            <div class="generation-group-badge">
+              <span>Generation ${gen}</span>
             </div>
-        `
+          </div>
+          <div class="members-grid">
+            ${groupedDescendants
+              .map((memberOrPair) => {
+                if (Array.isArray(memberOrPair)) {
+                  return `
+                    <div class="spouse-pair">
+                      ${memberOrPair.map((member) => renderMemberCard(member, true)).join("")}
+                      <div class="marriage-line"></div>
+                    </div>
+                  `
+                } else {
+                  return renderMemberCard(memberOrPair, true)
+                }
+              })
+              .join("")}
+          </div>
+        </div>
+      `
     })
     .join("")
 }
@@ -689,113 +554,126 @@ function renderMemberCard(member, isSpousePair = false) {
   const isSearchMatch =
     currentSearchTerm &&
     (member.name.toLowerCase().includes(currentSearchTerm) ||
-      member.profession.toLowerCase().includes(currentSearchTerm) ||
-      member.qualification.toLowerCase().includes(currentSearchTerm) ||
+      (member.profession && member.profession.toLowerCase().includes(currentSearchTerm)) ||
+      (member.qualification && member.qualification.toLowerCase().includes(currentSearchTerm)) ||
       member.branch.toLowerCase().includes(currentSearchTerm))
 
-  const cardClass = `member-card ${branchColorClass} ${member.isHead ? "family-head" : ""} ${member.isDeceased ? "deceased" : ""} ${isSpousePair ? "spouse-card" : ""} ${isSearchMatch ? "search-highlight" : ""}`
+  const cardClass = `member-card ${branchColorClass} ${member.isHead ? "family-head" : ""} ${
+    member.isDeceased ? "deceased" : ""
+  } ${isSpousePair ? "spouse-card" : ""} ${isSearchMatch ? "search-highlight" : ""}`
 
   return `
-        <div class="${cardClass}">
-            ${
-              member.isHead
-                ? `
-                <div class="crown-badge">
-                    <i class="fas fa-crown"></i>
-                </div>
-            `
-                : ""
-            }
-            
-            <div class="member-content">
-                <div class="member-photo">
-                    <div class="photo-frame ${member.isHead ? "family-head" : ""}">
-                        <div class="photo-placeholder">
-                            ${getInitials(member.name)}
-                        </div>
-                    </div>
-                </div>
-                
-                <h3 class="member-name ${isSpousePair ? "spouse-name" : ""}">
-                    ${member.name}
-                    ${member.isDeceased ? '<span class="deceased-indicator">(Late)</span>' : ""}
-                </h3>
-                
-                <div class="member-details">
-                    ${
-                      member.profession
-                        ? `
-                        <div class="detail-item profession">
-                            <i class="fas fa-briefcase"></i>
-                            ${member.profession}
-                        </div>
-                    `
-                        : ""
-                    }
-                    
-                    ${
-                      member.qualification
-                        ? `
-                        <div class="detail-item qualification">
-                            <i class="fas fa-graduation-cap"></i>
-                            ${member.qualification}
-                        </div>
-                    `
-                        : ""
-                    }
-                    
-                    ${
-                      member.contact
-                        ? `
-                        <div class="detail-item contact">
-                            <i class="fas fa-phone"></i>
-                            ${member.contact}
-                        </div>
-                    `
-                        : ""
-                    }
-                </div>
-                
-                <div class="member-badges">
-                    ${
-                      member.isHead
-                        ? `
-                        <div class="badge head">
-                            <i class="fas fa-crown"></i>
-                            HEAD
-                        </div>
-                    `
-                        : ""
-                    }
-                    
-                    ${
-                      member.spouse
-                        ? `
-                        <div class="badge married">
-                            <i class="fas fa-heart"></i>
-                            MARRIED
-                        </div>
-                    `
-                        : ""
-                    }
-                    
-                    ${
-                      member.children.length > 0
-                        ? `
-                        <div class="badge children">
-                            <i class="fas fa-users"></i>
-                            ${member.children.length}
-                        </div>
-                    `
-                        : ""
-                    }
-                </div>
-                
-                <div class="branch-info">
-                    <div class="branch-label">FAMILY BRANCH</div>
-                    <div class="branch-name">${member.branch}</div>
-                </div>
+    <div class="${cardClass}">
+      ${
+        member.isHead
+          ? `
+          <div class="crown-badge">
+            <i class="fas fa-crown"></i>
+          </div>
+        `
+          : ""
+      }
+      
+      <div class="member-content">
+        <div class="member-photo">
+          <div class="photo-frame ${member.isHead ? "family-head" : ""}">
+            <div class="photo-placeholder">
+              ${getInitials(member.name)}
             </div>
+          </div>
         </div>
-    `
+        
+        <h3 class="member-name ${isSpousePair ? "spouse-name" : ""}">
+          ${member.name}
+          ${member.isDeceased ? '<span class="deceased-indicator">(Late)</span>' : ""}
+        </h3>
+        
+        <div class="member-details">
+          ${
+            member.profession
+              ? `
+            <div class="detail-item profession">
+              <i class="fas fa-briefcase"></i>
+              <span>${member.profession}</span>
+            </div>
+          `
+              : ""
+          }
+          
+          ${
+            member.qualification
+              ? `
+            <div class="detail-item qualification">
+              <i class="fas fa-graduation-cap"></i>
+              <span>${member.qualification}</span>
+            </div>
+          `
+              : ""
+          }
+          
+          ${
+            member.contact
+              ? `
+            <div class="detail-item contact">
+              <i class="fas fa-phone"></i>
+              <span>${member.contact}</span>
+            </div>
+          `
+              : ""
+          }
+        </div>
+        
+        <div class="member-badges">
+          ${
+            member.isHead
+              ? `
+            <div class="badge head">
+              <i class="fas fa-crown"></i>
+              HEAD
+            </div>
+          `
+              : ""
+          }
+          
+          ${
+            member.spouse
+              ? `
+            <div class="badge married">
+              <i class="fas fa-heart"></i>
+              MARRIED
+            </div>
+          `
+              : ""
+          }
+          
+          ${
+            member.children && member.children.length > 0
+              ? `
+            <div class="badge children">
+              <i class="fas fa-users"></i>
+              ${member.children.length}
+            </div>
+          `
+              : ""
+          }
+        </div>
+        
+        <div class="branch-info">
+          <div class="branch-label">FAMILY BRANCH</div>
+          <div class="branch-name">${member.branch}</div>
+        </div>
+      </div>
+    </div>
+  `
+}
+
+// Make functions globally available for onclick handlers
+window.toggleFamilyCollapse = toggleFamilyCollapse
+window.clearSearch = clearSearch
+
+// Function to set familyData
+function setFamilyData(data) {
+  familyData = data
+  filteredMembers = [...familyData]
+  renderFamilyTree()
 }
