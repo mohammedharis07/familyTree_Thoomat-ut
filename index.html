@@ -122,8 +122,18 @@
     <!-- Main Content -->
     <main class="main-content">
         <div class="container">
+            <!-- Loading Message -->
+            <div id="loading-message" class="loading-message">
+                <div class="loading-content">
+                    <div class="loading-icon">
+                        <i class="fas fa-spinner fa-spin"></i>
+                    </div>
+                    <p>Loading family tree data...</p>
+                </div>
+            </div>
+
             <!-- Family Tree Container -->
-            <div id="family-tree-container" class="family-tree-container">
+            <div id="family-tree-container" class="family-tree-container" style="display: none;">
                 <!-- Content will be dynamically generated -->
             </div>
 
@@ -138,6 +148,21 @@
                     <button onclick="clearSearch()" class="clear-search-btn">
                         <i class="fas fa-times"></i>
                         Clear Search
+                    </button>
+                </div>
+            </div>
+
+            <!-- Error Message -->
+            <div id="error-message" class="error-message" style="display: none;">
+                <div class="error-content">
+                    <div class="error-icon">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <h3>Failed to Load Family Data</h3>
+                    <p>There was an error loading the family tree data. Please check the console for more details.</p>
+                    <button onclick="location.reload()" class="retry-btn">
+                        <i class="fas fa-refresh"></i>
+                        Retry
                     </button>
                 </div>
             </div>
