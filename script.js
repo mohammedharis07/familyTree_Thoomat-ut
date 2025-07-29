@@ -20,6 +20,12 @@ const branchColors = [
 
 // Initialize the application
 document.addEventListener("DOMContentLoaded", () => {
+  // Use the global familyData if available
+  if (window.familyData) {
+    familyData = window.familyData
+    filteredMembers = [...familyData]
+  }
+
   initializeEventListeners()
   createDataParticles()
   renderFamilyTree()
@@ -677,3 +683,6 @@ function setFamilyData(data) {
   filteredMembers = [...familyData]
   renderFamilyTree()
 }
+
+// Make setFamilyData globally available
+window.setFamilyData = setFamilyData
