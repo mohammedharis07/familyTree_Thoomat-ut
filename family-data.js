@@ -1,747 +1,98 @@
-// Complete Family Data - All 10 families based on the correct family structure
-console.log("Loading family data for all 10 families...")
+// Main Family Data File - Combines all 10 families
+console.log("Loading main family data file...")
 
-// Family 1: A T Mohamed unny (Late) & P.M Kochu Rabiya - 23 members
-const mohamedunnyFamily = [
-  // Family Heads
-  {
-    id: "head-1",
-    name: "A T Mohamed unny",
-    isHead: true,
-    generation: 1,
-    spouse: "P.M Kochu Rabiya",
-    children: ["najuma", "nazir", "naseema", "najeeba"],
-    branch: "A T Mohamed unny (Late) & P.M Kochu Rabiya",
-    isDeceased: true,
-  },
-  {
-    id: "head-1-spouse",
-    name: "P.M Kochu Rabiya",
-    isHead: false,
-    generation: 1,
-    spouse: "A T Mohamed unny",
-    children: ["najuma", "nazir", "naseema", "najeeba"],
-    branch: "A T Mohamed unny (Late) & P.M Kochu Rabiya",
-  },
+// Function to load all family data files
+function loadAllFamilyData() {
+  // Wait for all individual family files to load
+  const checkDataLoaded = () => {
+    if (
+      typeof window !== "undefined" &&
+      window.family1Data &&
+      window.family2Data &&
+      window.family3Data &&
+      window.family4Data &&
+      window.family5Data &&
+      window.family6Data &&
+      window.family7Data &&
+      window.family8Data &&
+      window.family9Data &&
+      window.family10Data
+    ) {
+      // Combine all families into one array
+      const allFamilyData = [
+        ...window.family1Data,
+        ...window.family2Data,
+        ...window.family3Data,
+        ...window.family4Data,
+        ...window.family5Data,
+        ...window.family6Data,
+        ...window.family7Data,
+        ...window.family8Data,
+        ...window.family9Data,
+        ...window.family10Data,
+      ]
 
-  // Generation 2 - Children
-  {
-    id: "najuma",
-    name: "Najuma PM",
-    profession: "Retired Head Mistress",
-    qualification: "BSc, B.Ed",
-    contact: "0091 9497824025",
-    isHead: false,
-    generation: 2,
-    parentId: "head-1",
-    spouse: "Dr CV Abdulla Kutty",
-    children: ["afdal", "aysha-nasrene", "aslam"],
-    branch: "A T Mohamed unny (Late) & P.M Kochu Rabiya",
-  },
-  {
-    id: "najuma-spouse",
-    name: "Dr CV Abdulla Kutty",
-    profession: "Retired Principal",
-    qualification: "MA, PhD",
-    contact: "0091 9447944198",
-    isHead: false,
-    generation: 2,
-    spouse: "Najuma PM",
-    children: ["afdal", "aysha-nasrene", "aslam"],
-    branch: "A T Mohamed unny (Late) & P.M Kochu Rabiya",
-  },
-  {
-    id: "nazir",
-    name: "PM Nazir",
-    profession: "Business",
-    qualification: "B.A",
-    contact: "00971 55 9484721",
-    isHead: false,
-    generation: 2,
-    parentId: "head-1",
-    spouse: "Shainas Alamana Mohamed Haneefa",
-    children: ["abbas-nazir", "aysha-nazir"],
-    branch: "A T Mohamed unny (Late) & P.M Kochu Rabiya",
-  },
-  {
-    id: "nazir-spouse",
-    name: "Shainas Alamana Mohamed Haneefa",
-    profession: "Homemaker",
-    qualification: "B.A",
-    contact: "00971 54 4890592",
-    isHead: false,
-    generation: 2,
-    spouse: "PM Nazir",
-    children: ["abbas-nazir", "aysha-nazir"],
-    branch: "A T Mohamed unny (Late) & P.M Kochu Rabiya",
-  },
-  {
-    id: "naseema",
-    name: "Naseema P.M.",
-    profession: "Homemaker",
-    qualification: "Pre-degree, Diploma in Home Sciences",
-    contact: "0091 9746799307",
-    isHead: false,
-    generation: 2,
-    parentId: "head-1",
-    spouse: "Abdul Majeed N.P",
-    children: ["adeeb", "farhana", "adheela"],
-    branch: "A T Mohamed unny (Late) & P.M Kochu Rabiya",
-  },
-  {
-    id: "naseema-spouse",
-    name: "Abdul Majeed N.P",
-    isHead: false,
-    generation: 2,
-    spouse: "Naseema P.M.",
-    children: ["adeeb", "farhana", "adheela"],
-    branch: "A T Mohamed unny (Late) & P.M Kochu Rabiya",
-  },
-  {
-    id: "najeeba",
-    name: "Najeeba PM",
-    profession: "Homemaker",
-    qualification: "B.A",
-    contact: "0091 9946955299",
-    isHead: false,
-    generation: 2,
-    parentId: "head-1",
-    spouse: "Mohammed Salim K.H",
-    children: ["salman", "shehzad", "zaahir"],
-    branch: "A T Mohamed unny (Late) & P.M Kochu Rabiya",
-  },
-  {
-    id: "najeeba-spouse",
-    name: "Mohammed Salim K.H",
-    profession: "Retired Head Master",
-    qualification: "MSc, B.Ed",
-    contact: "0091 9447920072",
-    isHead: false,
-    generation: 2,
-    spouse: "Najeeba PM",
-    children: ["salman", "shehzad", "zaahir"],
-    branch: "A T Mohamed unny (Late) & P.M Kochu Rabiya",
-  },
+      // Set the global family data
+      window.familyData = allFamilyData
 
-  // Generation 3 - Grandchildren
-  {
-    id: "afdal",
-    name: "Afdal Abdulla",
-    profession: "Information Security Officer",
-    qualification: "BE",
-    contact: "00974 70002766",
-    isHead: false,
-    generation: 3,
-    parentId: "najuma",
-    spouse: "Thameema Sharaf",
-    children: ["zayan", "razan"],
-    branch: "A T Mohamed unny (Late) & P.M Kochu Rabiya",
-  },
-  {
-    id: "thameema",
-    name: "Thameema Sharaf",
-    profession: "Textile Designer",
-    qualification: "BDes",
-    contact: "00974 50750432",
-    isHead: false,
-    generation: 3,
-    spouse: "Afdal Abdulla",
-    children: ["zayan", "razan"],
-    branch: "A T Mohamed unny (Late) & P.M Kochu Rabiya",
-  },
-  {
-    id: "aysha-nasrene",
-    name: "Adv. Aysha Nasrene",
-    profession: "Lawyer (Practising)",
-    qualification: "BSc, MA, LLB",
-    contact: "0091 9746262558",
-    isHead: false,
-    generation: 3,
-    parentId: "najuma",
-    children: [],
-    branch: "A T Mohamed unny (Late) & P.M Kochu Rabiya",
-  },
-  {
-    id: "aslam",
-    name: "Aslam Abdullakutty",
-    profession: "App Developer",
-    qualification: "BA",
-    contact: "0091 9995899402",
-    isHead: false,
-    generation: 3,
-    parentId: "najuma",
-    children: [],
-    branch: "A T Mohamed unny (Late) & P.M Kochu Rabiya",
-  },
-  {
-    id: "abbas-nazir",
-    name: "Mohammed Abbas Nazir",
-    profession: "Business",
-    qualification: "B.Eng",
-    contact: "00971 55 9484716",
-    isHead: false,
-    generation: 3,
-    parentId: "nazir",
-    children: [],
-    branch: "A T Mohamed unny (Late) & P.M Kochu Rabiya",
-  },
-  {
-    id: "aysha-nazir",
-    name: "Aysha Nazir",
-    profession: "Strategy and Policy Consultant",
-    qualification: "BSc Economics & M.S in DEDP",
-    contact: "00971 50 9382699",
-    isHead: false,
-    generation: 3,
-    parentId: "nazir",
-    children: [],
-    branch: "A T Mohamed unny (Late) & P.M Kochu Rabiya",
-  },
-  {
-    id: "adeeb",
-    name: "Adeeb Abdul Majeed",
-    profession: "Project Manager",
-    qualification: "B.Tech, PMP",
-    contact: "00971 56 9064860",
-    isHead: false,
-    generation: 3,
-    parentId: "naseema",
-    children: [],
-    branch: "A T Mohamed unny (Late) & P.M Kochu Rabiya",
-  },
-  {
-    id: "farhana",
-    name: "Dr Farhana Zakir",
-    profession: "Student",
-    qualification: "B.Tech, M.Tech, PhD",
-    contact: "0044 7553795330",
-    isHead: false,
-    generation: 3,
-    parentId: "naseema",
-    children: [],
-    branch: "A T Mohamed unny (Late) & P.M Kochu Rabiya",
-  },
-  {
-    id: "adheela",
-    name: "Adv. Adheela Nowrin",
-    profession: "Lawyer (Junior Advocate at High Court Of Kerala)",
-    qualification: "BA, LL.B & LL.M",
-    contact: "0091 7558944646",
-    isHead: false,
-    generation: 3,
-    parentId: "naseema",
-    children: [],
-    branch: "A T Mohamed unny (Late) & P.M Kochu Rabiya",
-  },
-  {
-    id: "salman",
-    name: "Salman Salim",
-    profession: "Sales Representative",
-    qualification: "BCA",
-    contact: "00971 8891690013",
-    isHead: false,
-    generation: 3,
-    parentId: "najeeba",
-    children: [],
-    branch: "A T Mohamed unny (Late) & P.M Kochu Rabiya",
-  },
-  {
-    id: "shehzad",
-    name: "Shehzad Mehar",
-    profession: "Student",
-    qualification: "MA, BEd",
-    contact: "0091 9633131204",
-    isHead: false,
-    generation: 3,
-    parentId: "najeeba",
-    children: [],
-    branch: "A T Mohamed unny (Late) & P.M Kochu Rabiya",
-  },
-  {
-    id: "zaahir",
-    name: "Zaahir Hydrose Salim",
-    profession: "Engineer (Infosys)",
-    qualification: "B.Tech",
-    contact: "0091 9745430236",
-    isHead: false,
-    generation: 3,
-    parentId: "najeeba",
-    children: [],
-    branch: "A T Mohamed unny (Late) & P.M Kochu Rabiya",
-  },
+      // Function to set family data (for compatibility)
+      window.setFamilyData = (data) => {
+        window.familyData = data
+        console.log("Family data updated:", data.length, "members")
+      }
 
-  // Generation 4 - Great-grandchildren
-  {
-    id: "zayan",
-    name: "Zayan Afdal",
-    isHead: false,
-    generation: 4,
-    parentId: "afdal",
-    children: [],
-    branch: "A T Mohamed unny (Late) & P.M Kochu Rabiya",
-  },
-  {
-    id: "razan",
-    name: "Razan Afdal",
-    isHead: false,
-    generation: 4,
-    parentId: "afdal",
-    children: [],
-    branch: "A T Mohamed unny (Late) & P.M Kochu Rabiya",
-  },
-]
+      console.log("All 10 families data combined successfully:", allFamilyData.length, "members total")
 
-// Family 2: A T kunjupathumma (Late) & P.K Athakutty (Late) - 147 members (placeholder structure)
-const kunjupathummaFamily = [
-  {
-    id: "head-2",
-    name: "A T kunjupathumma",
-    isHead: true,
-    generation: 1,
-    spouse: "P.K Athakutty",
-    children: ["child2-1", "child2-2", "child2-3"],
-    branch: "A T kunjupathumma (Late) & P.K Athakutty (Late)",
-    isDeceased: true,
-  },
-  {
-    id: "head-2-spouse",
-    name: "P.K Athakutty",
-    isHead: false,
-    generation: 1,
-    spouse: "A T kunjupathumma",
-    children: ["child2-1", "child2-2", "child2-3"],
-    branch: "A T kunjupathumma (Late) & P.K Athakutty (Late)",
-    isDeceased: true,
-  },
-  {
-    id: "child2-1",
-    name: "First Child of Kunjupathumma",
-    profession: "To be updated",
-    isHead: false,
-    generation: 2,
-    parentId: "head-2",
-    children: [],
-    branch: "A T kunjupathumma (Late) & P.K Athakutty (Late)",
-  },
-  {
-    id: "child2-2",
-    name: "Second Child of Kunjupathumma",
-    profession: "To be updated",
-    isHead: false,
-    generation: 2,
-    parentId: "head-2",
-    children: [],
-    branch: "A T kunjupathumma (Late) & P.K Athakutty (Late)",
-  },
-  {
-    id: "child2-3",
-    name: "Third Child of Kunjupathumma",
-    profession: "To be updated",
-    isHead: false,
-    generation: 2,
-    parentId: "head-2",
-    children: [],
-    branch: "A T kunjupathumma (Late) & P.K Athakutty (Late)",
-  },
-]
+      // Log family breakdown with current and target counts
+      console.log("=== FAMILY BREAKDOWN ===")
+      console.log("1. A T Mohamed unny (Late) & P.M Kochu Rabiya:", window.family1Data.length, "/ 23 members")
+      console.log("2. A T kunjupathumma (Late) & P.K Athakutty (Late):", window.family2Data.length, "/ 147 members")
+      console.log("3. A T Pathayu (Late) & Weetiparambil Ayyutty (Late):", window.family3Data.length, "/ 50 members")
+      console.log("4. A T Nafeesakutty & M.A Bappu Moulavi (Late):", window.family4Data.length, "/ 39 members")
+      console.log("5. A.T AliKunji (Late) & P.K Kunhipathunni:", window.family5Data.length, "/ 22 members")
+      console.log("6. A.T Kunjaisu (Late) & R.V Mohammed Haji (Late):", window.family6Data.length, "/ 52 members")
+      console.log("7. A.T Aminakutty (Late) & A.M Bayu (Late):", window.family7Data.length, "/ 29 members")
+      console.log("8. A T Aboobakker (Late) & Rasiya .P.N:", window.family8Data.length, "/ 18 members")
+      console.log("9. A.T Zainba & Abdul Kadar:", window.family9Data.length, "/ 25 members")
+      console.log("10. A T Ibrahim Kutty & Zohra Ibrahim:", window.family10Data.length, "/ 16 members")
+      console.log("=========================")
+      console.log("Current Total:", allFamilyData.length, "members")
+      console.log("Target Total: 421 members")
+      console.log("Remaining to add:", 421 - allFamilyData.length, "members")
 
-// Family 3: A T Pathayu (Late) & Weetiparambil Ayyutty (Late) - 50 members (placeholder structure)
-const pathayuFamily = [
-  {
-    id: "head-3",
-    name: "A T Pathayu",
-    isHead: true,
-    generation: 1,
-    spouse: "Weetiparambil Ayyutty",
-    children: ["child3-1", "child3-2"],
-    branch: "A T Pathayu (Late) & Weetiparambil Ayyutty (Late)",
-    isDeceased: true,
-  },
-  {
-    id: "head-3-spouse",
-    name: "Weetiparambil Ayyutty",
-    isHead: false,
-    generation: 1,
-    spouse: "A T Pathayu",
-    children: ["child3-1", "child3-2"],
-    branch: "A T Pathayu (Late) & Weetiparambil Ayyutty (Late)",
-    isDeceased: true,
-  },
-  {
-    id: "child3-1",
-    name: "First Child of Pathayu",
-    profession: "To be updated",
-    isHead: false,
-    generation: 2,
-    parentId: "head-3",
-    children: [],
-    branch: "A T Pathayu (Late) & Weetiparambil Ayyutty (Late)",
-  },
-  {
-    id: "child3-2",
-    name: "Second Child of Pathayu",
-    profession: "To be updated",
-    isHead: false,
-    generation: 2,
-    parentId: "head-3",
-    children: [],
-    branch: "A T Pathayu (Late) & Weetiparambil Ayyutty (Late)",
-  },
-]
+      return true
+    }
+    return false
+  }
 
-// Family 4: A T Nafeesakutty & M.A Bappu Moulavi (Late) - 39 members (placeholder structure)
-const nafeesakuttyFamily = [
-  {
-    id: "head-4",
-    name: "A T Nafeesakutty",
-    isHead: true,
-    generation: 1,
-    spouse: "M.A Bappu Moulavi",
-    children: ["child4-1", "child4-2"],
-    branch: "A T Nafeesakutty & M.A Bappu Moulavi (Late)",
-  },
-  {
-    id: "head-4-spouse",
-    name: "M.A Bappu Moulavi",
-    isHead: false,
-    generation: 1,
-    spouse: "A T Nafeesakutty",
-    children: ["child4-1", "child4-2"],
-    branch: "A T Nafeesakutty & M.A Bappu Moulavi (Late)",
-    isDeceased: true,
-  },
-  {
-    id: "child4-1",
-    name: "First Child of Nafeesakutty",
-    profession: "To be updated",
-    isHead: false,
-    generation: 2,
-    parentId: "head-4",
-    children: [],
-    branch: "A T Nafeesakutty & M.A Bappu Moulavi (Late)",
-  },
-  {
-    id: "child4-2",
-    name: "Second Child of Nafeesakutty",
-    profession: "To be updated",
-    isHead: false,
-    generation: 2,
-    parentId: "head-4",
-    children: [],
-    branch: "A T Nafeesakutty & M.A Bappu Moulavi (Late)",
-  },
-]
+  // Try to load data immediately
+  if (!checkDataLoaded()) {
+    // If not loaded, wait a bit and try again
+    setTimeout(() => {
+      if (!checkDataLoaded()) {
+        console.warn("Some family data files may not have loaded properly")
+        // Create empty arrays for missing data
+        window.family1Data = window.family1Data || []
+        window.family2Data = window.family2Data || []
+        window.family3Data = window.family3Data || []
+        window.family4Data = window.family4Data || []
+        window.family5Data = window.family5Data || []
+        window.family6Data = window.family6Data || []
+        window.family7Data = window.family7Data || []
+        window.family8Data = window.family8Data || []
+        window.family9Data = window.family9Data || []
+        window.family10Data = window.family10Data || []
 
-// Family 5: A.T AliKunji (Late) & P.K Kunhipathunni - 22 members (placeholder structure)
-const aliKunjiFamily = [
-  {
-    id: "head-5",
-    name: "A.T AliKunji",
-    isHead: true,
-    generation: 1,
-    spouse: "P.K Kunhipathunni",
-    children: ["child5-1", "child5-2"],
-    branch: "A.T AliKunji (Late) & P.K Kunhipathunni",
-    isDeceased: true,
-  },
-  {
-    id: "head-5-spouse",
-    name: "P.K Kunhipathunni",
-    isHead: false,
-    generation: 1,
-    spouse: "A.T AliKunji",
-    children: ["child5-1", "child5-2"],
-    branch: "A.T AliKunji (Late) & P.K Kunhipathunni",
-  },
-  {
-    id: "child5-1",
-    name: "First Child of AliKunji",
-    profession: "To be updated",
-    isHead: false,
-    generation: 2,
-    parentId: "head-5",
-    children: [],
-    branch: "A.T AliKunji (Late) & P.K Kunhipathunni",
-  },
-  {
-    id: "child5-2",
-    name: "Second Child of AliKunji",
-    profession: "To be updated",
-    isHead: false,
-    generation: 2,
-    parentId: "head-5",
-    children: [],
-    branch: "A.T AliKunji (Late) & P.K Kunhipathunni",
-  },
-]
-
-// Family 6: A.T Kunjaisu (Late) & R.V Mohammed Haji (Late) - 52 members (placeholder structure)
-const kunjaisuFamily = [
-  {
-    id: "head-6",
-    name: "A.T Kunjaisu",
-    isHead: true,
-    generation: 1,
-    spouse: "R.V Mohammed Haji",
-    children: ["child6-1", "child6-2"],
-    branch: "A.T Kunjaisu (Late) & R.V Mohammed Haji (Late)",
-    isDeceased: true,
-  },
-  {
-    id: "head-6-spouse",
-    name: "R.V Mohammed Haji",
-    isHead: false,
-    generation: 1,
-    spouse: "A.T Kunjaisu",
-    children: ["child6-1", "child6-2"],
-    branch: "A.T Kunjaisu (Late) & R.V Mohammed Haji (Late)",
-    isDeceased: true,
-  },
-  {
-    id: "child6-1",
-    name: "First Child of Kunjaisu",
-    profession: "To be updated",
-    isHead: false,
-    generation: 2,
-    parentId: "head-6",
-    children: [],
-    branch: "A.T Kunjaisu (Late) & R.V Mohammed Haji (Late)",
-  },
-  {
-    id: "child6-2",
-    name: "Second Child of Kunjaisu",
-    profession: "To be updated",
-    isHead: false,
-    generation: 2,
-    parentId: "head-6",
-    children: [],
-    branch: "A.T Kunjaisu (Late) & R.V Mohammed Haji (Late)",
-  },
-]
-
-// Family 7: A.T Aminakutty (Late) & A.M Bayu (Late) - 29 members (placeholder structure)
-const aminakuttyFamily = [
-  {
-    id: "head-7",
-    name: "A.T Aminakutty",
-    isHead: true,
-    generation: 1,
-    spouse: "A.M Bayu",
-    children: ["child7-1", "child7-2"],
-    branch: "A.T Aminakutty (Late) & A.M Bayu (Late)",
-    isDeceased: true,
-  },
-  {
-    id: "head-7-spouse",
-    name: "A.M Bayu",
-    isHead: false,
-    generation: 1,
-    spouse: "A.T Aminakutty",
-    children: ["child7-1", "child7-2"],
-    branch: "A.T Aminakutty (Late) & A.M Bayu (Late)",
-    isDeceased: true,
-  },
-  {
-    id: "child7-1",
-    name: "First Child of Aminakutty",
-    profession: "To be updated",
-    isHead: false,
-    generation: 2,
-    parentId: "head-7",
-    children: [],
-    branch: "A.T Aminakutty (Late) & A.M Bayu (Late)",
-  },
-  {
-    id: "child7-2",
-    name: "Second Child of Aminakutty",
-    profession: "To be updated",
-    isHead: false,
-    generation: 2,
-    parentId: "head-7",
-    children: [],
-    branch: "A.T Aminakutty (Late) & A.M Bayu (Late)",
-  },
-]
-
-// Family 8: A T Aboobakker (Late) & Rasiya .P.N - 18 members (placeholder structure)
-const aboobakkerFamily = [
-  {
-    id: "head-8",
-    name: "A T Aboobakker",
-    isHead: true,
-    generation: 1,
-    spouse: "Rasiya .P.N",
-    children: ["child8-1", "child8-2"],
-    branch: "A T Aboobakker (Late) & Rasiya .P.N",
-    isDeceased: true,
-  },
-  {
-    id: "head-8-spouse",
-    name: "Rasiya .P.N",
-    isHead: false,
-    generation: 1,
-    spouse: "A T Aboobakker",
-    children: ["child8-1", "child8-2"],
-    branch: "A T Aboobakker (Late) & Rasiya .P.N",
-  },
-  {
-    id: "child8-1",
-    name: "First Child of Aboobakker",
-    profession: "To be updated",
-    isHead: false,
-    generation: 2,
-    parentId: "head-8",
-    children: [],
-    branch: "A T Aboobakker (Late) & Rasiya .P.N",
-  },
-  {
-    id: "child8-2",
-    name: "Second Child of Aboobakker",
-    profession: "To be updated",
-    isHead: false,
-    generation: 2,
-    parentId: "head-8",
-    children: [],
-    branch: "A T Aboobakker (Late) & Rasiya .P.N",
-  },
-]
-
-// Family 9: A.T Zainba & Abdul Kadar - 25 members (placeholder structure)
-const zainbaFamily = [
-  {
-    id: "head-9",
-    name: "A.T Zainba",
-    isHead: true,
-    generation: 1,
-    spouse: "Abdul Kadar",
-    children: ["child9-1", "child9-2"],
-    branch: "A.T Zainba & Abdul Kadar",
-  },
-  {
-    id: "head-9-spouse",
-    name: "Abdul Kadar",
-    isHead: false,
-    generation: 1,
-    spouse: "A.T Zainba",
-    children: ["child9-1", "child9-2"],
-    branch: "A.T Zainba & Abdul Kadar",
-  },
-  {
-    id: "child9-1",
-    name: "First Child of Zainba",
-    profession: "To be updated",
-    isHead: false,
-    generation: 2,
-    parentId: "head-9",
-    children: [],
-    branch: "A.T Zainba & Abdul Kadar",
-  },
-  {
-    id: "child9-2",
-    name: "Second Child of Zainba",
-    profession: "To be updated",
-    isHead: false,
-    generation: 2,
-    parentId: "head-9",
-    children: [],
-    branch: "A.T Zainba & Abdul Kadar",
-  },
-]
-
-// Family 10: A T Ibrahim Kutty & Zohra Ibrahim - 16 members (placeholder structure)
-const ibrahimKuttyFamily = [
-  {
-    id: "head-10",
-    name: "A T Ibrahim Kutty",
-    isHead: true,
-    generation: 1,
-    spouse: "Zohra Ibrahim",
-    children: ["child10-1", "child10-2"],
-    branch: "A T Ibrahim Kutty & Zohra Ibrahim",
-  },
-  {
-    id: "head-10-spouse",
-    name: "Zohra Ibrahim",
-    isHead: false,
-    generation: 1,
-    spouse: "A T Ibrahim Kutty",
-    children: ["child10-1", "child10-2"],
-    branch: "A T Ibrahim Kutty & Zohra Ibrahim",
-  },
-  {
-    id: "child10-1",
-    name: "First Child of Ibrahim Kutty",
-    profession: "To be updated",
-    isHead: false,
-    generation: 2,
-    parentId: "head-10",
-    children: [],
-    branch: "A T Ibrahim Kutty & Zohra Ibrahim",
-  },
-  {
-    id: "child10-2",
-    name: "Second Child of Ibrahim Kutty",
-    profession: "To be updated",
-    isHead: false,
-    generation: 2,
-    parentId: "head-10",
-    children: [],
-    branch: "A T Ibrahim Kutty & Zohra Ibrahim",
-  },
-]
-
-// Combine all families into one array
-const allFamilyData = [
-  ...mohamedunnyFamily,
-  ...kunjupathummaFamily,
-  ...pathayuFamily,
-  ...nafeesakuttyFamily,
-  ...aliKunjiFamily,
-  ...kunjaisuFamily,
-  ...aminakuttyFamily,
-  ...aboobakkerFamily,
-  ...zainbaFamily,
-  ...ibrahimKuttyFamily,
-]
-
-// Set the global family data immediately
-if (typeof window !== "undefined") {
-  window.familyData = allFamilyData
-  console.log("All 10 families data set on window:", allFamilyData.length, "members total")
-}
-
-// Function to set family data (for compatibility)
-if (typeof window !== "undefined") {
-  window.setFamilyData = (data) => {
-    window.familyData = data
-    console.log("Family data updated:", data.length, "members")
+        // Try loading again
+        checkDataLoaded()
+      }
+    }, 100)
   }
 }
 
-console.log("All 10 families data script loaded successfully with", allFamilyData.length, "members total")
+// Load all family data when this script runs
+if (typeof window !== "undefined") {
+  loadAllFamilyData()
+}
 
-// Log family breakdown with correct names and target counts
-console.log("Family breakdown (Target counts from image):")
-console.log("1. A T Mohamed unny (Late) & P.M Kochu Rabiya: Current", mohamedunnyFamily.length, "members (Target: 23)")
-console.log(
-  "2. A T kunjupathumma (Late) & P.K Athakutty (Late): Current",
-  kunjupathummaFamily.length,
-  "members (Target: 147)",
-)
-console.log(
-  "3. A T Pathayu (Late) & Weetiparambil Ayyutty (Late): Current",
-  pathayuFamily.length,
-  "members (Target: 50)",
-)
-console.log(
-  "4. A T Nafeesakutty & M.A Bappu Moulavi (Late): Current",
-  nafeesakuttyFamily.length,
-  "members (Target: 39)",
-)
-console.log("5. A.T AliKunji (Late) & P.K Kunhipathunni: Current", aliKunjiFamily.length, "members (Target: 22)")
-console.log("6. A.T Kunjaisu (Late) & R.V Mohammed Haji (Late): Current", kunjaisuFamily.length, "members (Target: 52)")
-console.log("7. A.T Aminakutty (Late) & A.M Bayu (Late): Current", aminakuttyFamily.length, "members (Target: 29)")
-console.log("8. A T Aboobakker (Late) & Rasiya .P.N: Current", aboobakkerFamily.length, "members (Target: 18)")
-console.log("9. A.T Zainba & Abdul Kadar: Current", zainbaFamily.length, "members (Target: 25)")
-console.log("10. A T Ibrahim Kutty & Zohra Ibrahim: Current", ibrahimKuttyFamily.length, "members (Target: 16)")
-console.log("Current Total:", allFamilyData.length, "members (Target: 421 members)")
+console.log("Main family data file loaded successfully")
