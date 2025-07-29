@@ -44,7 +44,12 @@ body {
   }
 }
 
-.holographic-orb {
+.holographic-orbs {
+  position: absolute;
+  inset: 0;
+}
+
+.orb {
   position: absolute;
   border-radius: 50%;
   filter: blur(60px);
@@ -56,7 +61,7 @@ body {
   left: 25%;
   width: 384px;
   height: 384px;
-  background: linear-gradient(45deg, rgba(6, 182, 212, 0.2), rgba(147, 51, 234, 0.2), rgba(168, 85, 247, 0.2));
+  background: linear-gradient(45deg, rgba(6, 182, 212, 0.2), rgba(147, 51, 234, 0.2));
 }
 
 .orb-2 {
@@ -64,7 +69,7 @@ body {
   right: 25%;
   width: 320px;
   height: 320px;
-  background: linear-gradient(45deg, rgba(168, 85, 247, 0.2), rgba(236, 72, 153, 0.2), rgba(239, 68, 68, 0.2));
+  background: linear-gradient(45deg, rgba(147, 51, 234, 0.2), rgba(236, 72, 153, 0.2));
   animation-delay: 1s;
 }
 
@@ -73,24 +78,29 @@ body {
   left: 33%;
   width: 288px;
   height: 288px;
-  background: linear-gradient(45deg, rgba(16, 185, 129, 0.2), rgba(6, 182, 212, 0.2), rgba(59, 130, 246, 0.2));
+  background: linear-gradient(45deg, rgba(16, 185, 129, 0.2), rgba(6, 182, 212, 0.2));
   animation-delay: 2s;
 }
 
-.scanning-line {
+.scanning-lines {
+  position: absolute;
+  inset: 0;
+}
+
+.scan-line {
   position: absolute;
   background: linear-gradient(90deg, transparent, rgba(6, 182, 212, 0.6), transparent);
   animation: pulse 3s ease-in-out infinite;
 }
 
-.line-top {
+.scan-top {
   top: 0;
   left: 0;
   width: 100%;
   height: 2px;
 }
 
-.line-bottom {
+.scan-bottom {
   bottom: 0;
   left: 0;
   width: 100%;
@@ -98,7 +108,7 @@ body {
   animation-delay: 1s;
 }
 
-.line-left {
+.scan-left {
   top: 0;
   left: 0;
   width: 2px;
@@ -107,7 +117,7 @@ body {
   animation-delay: 0.5s;
 }
 
-.line-right {
+.scan-right {
   top: 0;
   right: 0;
   width: 2px;
@@ -116,40 +126,23 @@ body {
   animation-delay: 1.5s;
 }
 
+.data-particles {
+  position: absolute;
+  inset: 0;
+}
+
 .circuit-pattern {
   position: absolute;
   inset: 0;
   opacity: 0.1;
+  background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M 0 50 L 50 50 L 50 0 M 50 50 L 100 50 M 50 50 L 50 100' stroke='cyan' stroke-width='0.3' fill='none' opacity='0.6'/%3E%3Ccircle cx='50' cy='50' r='0.8' fill='cyan' opacity='0.8'/%3E%3C/svg%3E");
 }
 
-.circuit-svg {
-  width: 100%;
-  height: 100%;
-}
-
-.hexagonal-pattern {
+.hexagonal-overlay {
   position: absolute;
   inset: 0;
   opacity: 0.05;
-  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fillRule='evenodd'%3E%3Cg fill='%2300ffff' fillOpacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-}
-
-@keyframes pulse {
-  0%,
-  100% {
-    opacity: 0.3;
-  }
-  50% {
-    opacity: 1;
-  }
-}
-
-@keyframes ping {
-  75%,
-  100% {
-    transform: scale(2);
-    opacity: 0;
-  }
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z' fill='%2300ffff' fill-opacity='0.4'/%3E%3C/svg%3E");
 }
 
 /* Header Styles */
@@ -167,7 +160,6 @@ body {
   margin: 0 auto;
 }
 
-/* Mobile Header */
 .mobile-header {
   display: flex;
   justify-content: space-between;
@@ -183,10 +175,10 @@ body {
 .logo-container {
   position: relative;
   padding: 0.75rem;
-  background: linear-gradient(135deg, rgba(168, 85, 247, 0.3), rgba(236, 72, 153, 0.3));
+  background: linear-gradient(135deg, rgba(147, 51, 234, 0.3), rgba(236, 72, 153, 0.3));
   border-radius: 1rem;
   border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }
 
 .logo-container i {
@@ -202,13 +194,13 @@ body {
   height: 12px;
   background: #10b981;
   border-radius: 50%;
-  animation: pulse 2s infinite;
+  animation: pulse 2s ease-in-out infinite;
 }
 
 .title-text h1 {
   font-size: 1.25rem;
   font-weight: 900;
-  background: linear-gradient(45deg, white, #c084fc, #f472b6);
+  background: linear-gradient(45deg, white, #a855f7, #ec4899);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -227,14 +219,8 @@ body {
 
 .mobile-menu-btn:hover {
   background: rgba(255, 255, 255, 0.2);
-  transform: scale(1.05);
 }
 
-.mobile-menu-btn i {
-  font-size: 1.5rem;
-}
-
-/* Desktop Header */
 .desktop-header {
   display: none;
   justify-content: space-between;
@@ -247,24 +233,14 @@ body {
   gap: 1.5rem;
 }
 
-.logo-section .logo-container {
-  padding: 1rem;
-  border-radius: 1.5rem;
-}
-
-.logo-section .logo-container i {
-  font-size: 3rem;
-}
-
 .title-section h1 {
   font-size: 3rem;
   font-weight: 900;
-  background: linear-gradient(45deg, white, #c084fc, #f472b6);
+  background: linear-gradient(45deg, white, #a855f7, #ec4899);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   letter-spacing: 0.05em;
-  line-height: 1.1;
 }
 
 .subtitle {
@@ -278,15 +254,7 @@ body {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-}
-
-.subtitle-item i {
-  font-size: 1rem;
-  color: #c084fc;
-}
-
-.subtitle-item span {
-  color: rgba(192, 132, 252, 0.8);
+  color: rgba(255, 255, 255, 0.8);
   font-size: 0.875rem;
   font-weight: 500;
 }
@@ -294,11 +262,11 @@ body {
 .subtitle-divider {
   width: 4px;
   height: 4px;
-  background: #c084fc;
+  background: #a855f7;
   border-radius: 50%;
 }
 
-.header-right {
+.header-controls {
   display: flex;
   align-items: center;
   gap: 1rem;
@@ -328,20 +296,19 @@ body {
 }
 
 .search-input::placeholder {
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.6);
 }
 
 .search-input:focus {
   outline: none;
-  border-color: #8b5cf6;
-  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
-  background: rgba(255, 255, 255, 0.15);
+  border-color: #a855f7;
+  box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.2);
 }
 
 .search-icon {
   position: absolute;
   left: 0.75rem;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.6);
   font-size: 0.875rem;
   pointer-events: none;
 }
@@ -350,17 +317,17 @@ body {
   position: absolute;
   right: 0.5rem;
   padding: 0.25rem;
-  background: rgba(239, 68, 68, 0.2);
+  background: rgba(255, 255, 255, 0.1);
   border: none;
   border-radius: 0.25rem;
-  color: #ef4444;
+  color: rgba(255, 255, 255, 0.6);
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
 .search-clear:hover {
-  background: rgba(239, 68, 68, 0.3);
-  transform: scale(1.1);
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
 }
 
 .search-results-count {
@@ -369,12 +336,10 @@ body {
   left: 0;
   margin-top: 0.25rem;
   padding: 0.25rem 0.5rem;
-  background: rgba(16, 185, 129, 0.2);
-  border: 1px solid rgba(16, 185, 129, 0.3);
-  border-radius: 0.375rem;
-  color: #10b981;
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 0.25rem;
   font-size: 0.75rem;
-  font-weight: 500;
+  color: rgba(255, 255, 255, 0.8);
   white-space: nowrap;
 }
 
@@ -385,7 +350,7 @@ body {
   border-radius: 0.75rem;
   padding: 0.25rem;
   border: 1px solid rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(20px);
 }
 
 .view-btn {
@@ -402,19 +367,14 @@ body {
   transition: all 0.3s ease;
 }
 
-.view-btn:hover {
-  background: rgba(255, 255, 255, 0.1);
-  color: white;
-}
-
 .view-btn.active {
-  background: linear-gradient(45deg, #8b5cf6, #ec4899);
+  background: linear-gradient(45deg, #a855f7, #ec4899);
   color: white;
-  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+  box-shadow: 0 4px 12px rgba(168, 85, 247, 0.3);
 }
 
-.view-btn i {
-  font-size: 1rem;
+.view-btn:not(.active):hover {
+  background: rgba(255, 255, 255, 0.1);
 }
 
 /* Expand All Button */
@@ -429,17 +389,13 @@ body {
   color: white;
   font-weight: 500;
   cursor: pointer;
-  backdrop-filter: blur(10px);
   transition: all 0.3s ease;
+  backdrop-filter: blur(20px);
 }
 
 .expand-all-btn:hover {
   background: rgba(255, 255, 255, 0.2);
   transform: scale(1.05);
-}
-
-.expand-all-btn i {
-  font-size: 1rem;
 }
 
 /* Mobile Menu */
@@ -450,23 +406,11 @@ body {
   background: rgba(255, 255, 255, 0.1);
   border-radius: 0.75rem;
   border: 1px solid rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(20px);
 }
 
 .mobile-menu.show {
   display: block;
-  animation: slideDown 0.3s ease-out;
-}
-
-@keyframes slideDown {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 .mobile-menu-content {
@@ -475,41 +419,10 @@ body {
   gap: 1rem;
 }
 
-/* Mobile Search */
-.mobile-search-container {
-  position: relative;
-}
-
-.mobile-search-input-wrapper {
-  position: relative;
-  display: flex;
-  align-items: center;
-}
-
-.mobile-search-input {
+.mobile-search .search-input {
   width: 100%;
-  padding: 0.75rem 1rem 0.75rem 2.5rem;
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 0.75rem;
-  color: white;
-  font-size: 0.875rem;
-  backdrop-filter: blur(10px);
-  transition: all 0.3s ease;
 }
 
-.mobile-search-input::placeholder {
-  color: rgba(255, 255, 255, 0.5);
-}
-
-.mobile-search-input:focus {
-  outline: none;
-  border-color: #8b5cf6;
-  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
-  background: rgba(255, 255, 255, 0.15);
-}
-
-/* Mobile View Buttons */
 .mobile-view-buttons {
   display: flex;
   flex-direction: column;
@@ -519,9 +432,7 @@ body {
 .mobile-view-btn {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
-  gap: 0.75rem;
-  width: 100%;
+  gap: 0.5rem;
   padding: 0.75rem 1rem;
   border: none;
   border-radius: 0.5rem;
@@ -530,39 +441,32 @@ body {
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
-}
-
-.mobile-view-btn:hover {
-  background: rgba(255, 255, 255, 0.1);
-  color: white;
+  text-align: left;
+  justify-content: flex-start;
 }
 
 .mobile-view-btn.active {
-  background: linear-gradient(45deg, #8b5cf6, #ec4899);
+  background: linear-gradient(45deg, #a855f7, #ec4899);
   color: white;
-  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
 }
 
-.mobile-view-btn i {
-  font-size: 1rem;
+.mobile-view-btn:not(.active):hover {
+  background: rgba(255, 255, 255, 0.1);
 }
 
-/* Mobile Expand Button */
 .mobile-expand-btn {
   display: flex;
   align-items: center;
-  justify-content: center;
   gap: 0.5rem;
-  width: 100%;
   padding: 0.75rem 1rem;
   background: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 0.75rem;
+  border-radius: 0.5rem;
   color: white;
   font-weight: 500;
   cursor: pointer;
-  backdrop-filter: blur(10px);
   transition: all 0.3s ease;
+  justify-content: center;
 }
 
 .mobile-expand-btn:hover {
@@ -575,8 +479,7 @@ body {
   z-index: 10;
   padding: 1rem 2rem;
   background: rgba(16, 185, 129, 0.1);
-  border-bottom: 1px solid rgba(16, 185, 129, 0.2);
-  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(16, 185, 129, 0.3);
 }
 
 .search-info-content {
@@ -585,36 +488,25 @@ body {
   display: flex;
   align-items: center;
   gap: 1rem;
-}
-
-.search-info-content i {
   color: #10b981;
-  font-size: 1rem;
 }
 
-.search-info-content span {
-  color: #10b981;
-  font-weight: 500;
-  flex: 1;
-}
-
-.search-info-clear {
+.clear-search-btn {
   display: flex;
   align-items: center;
   gap: 0.5rem;
   padding: 0.5rem 1rem;
-  background: rgba(239, 68, 68, 0.2);
-  border: 1px solid rgba(239, 68, 68, 0.3);
+  background: rgba(16, 185, 129, 0.2);
+  border: 1px solid rgba(16, 185, 129, 0.3);
   border-radius: 0.5rem;
-  color: #ef4444;
-  font-weight: 500;
+  color: #10b981;
+  font-size: 0.875rem;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
-.search-info-clear:hover {
-  background: rgba(239, 68, 68, 0.3);
-  transform: scale(1.05);
+.clear-search-btn:hover {
+  background: rgba(16, 185, 129, 0.3);
 }
 
 /* Main Content */
@@ -629,12 +521,11 @@ body {
   margin: 0 auto;
 }
 
-/* Family Tree Container */
+/* Family Tree Styles */
 .family-tree-container {
   display: block;
 }
 
-/* Generation View */
 .generation-section {
   margin-bottom: 4rem;
   position: relative;
@@ -642,7 +533,6 @@ body {
 
 .generation-label {
   display: flex;
-  align-items: center;
   justify-content: center;
   margin-bottom: 3rem;
   position: relative;
@@ -653,12 +543,15 @@ body {
 }
 
 .generation-badge-content {
-  background: linear-gradient(45deg, rgba(168, 85, 247, 0.3), rgba(236, 72, 153, 0.3));
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 2rem;
+  background: linear-gradient(135deg, rgba(147, 51, 234, 0.3), rgba(236, 72, 153, 0.3));
   border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 1rem;
-  padding: 1rem 2rem;
   backdrop-filter: blur(20px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
   position: relative;
   overflow: hidden;
 }
@@ -670,24 +563,18 @@ body {
   background: linear-gradient(45deg, rgba(255, 255, 255, 0.1), transparent);
 }
 
-.generation-badge-content {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-}
-
-.generation-badge-content i {
-  color: white;
-  font-size: 1.25rem;
-}
-
 .generation-badge-content span {
-  color: white;
   font-weight: 700;
   font-size: 1.125rem;
   letter-spacing: 0.05em;
   position: relative;
-  z-index: 10;
+  z-index: 1;
+}
+
+.generation-badge-content i {
+  color: white;
+  position: relative;
+  z-index: 1;
 }
 
 /* Members Grid */
@@ -702,121 +589,43 @@ body {
 
 /* Spouse Pair */
 .spouse-pair {
-  position: relative;
   display: flex;
   align-items: center;
   gap: 1rem;
+  position: relative;
 }
 
 .marriage-line {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   width: 1.5rem;
   height: 2px;
-  background: linear-gradient(90deg, #f472b6, #ec4899);
+  background: linear-gradient(90deg, #ec4899, #f97316);
   border-radius: 1px;
-  box-shadow: 0 0 10px rgba(244, 114, 182, 0.5);
+  box-shadow: 0 0 8px rgba(236, 72, 153, 0.5);
+  position: relative;
   z-index: 10;
 }
 
-/* Member Card */
+/* Member Card Styles */
 .member-card {
   width: 320px;
   border-radius: 1rem;
   border: 2px solid;
   backdrop-filter: blur(20px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
   transition: all 0.5s ease;
   position: relative;
   overflow: hidden;
-  cursor: pointer;
 }
 
 .member-card:hover {
   transform: scale(1.05) translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
 }
 
-.member-card.spouse-card {
+.spouse-card {
   width: 280px;
 }
 
-.member-card.family-head {
-  border-color: rgba(251, 191, 36, 0.9);
-  box-shadow: 0 20px 40px rgba(251, 191, 36, 0.4);
-}
-
-.member-card.deceased {
-  opacity: 0.9;
-  filter: grayscale(0.2);
-}
-
-.member-card.search-highlight {
-  border-color: #10b981;
-  box-shadow: 0 0 20px rgba(16, 185, 129, 0.5);
-  animation: searchPulse 2s infinite;
-}
-
-@keyframes searchPulse {
-  0%,
-  100% {
-    box-shadow: 0 0 20px rgba(16, 185, 129, 0.5);
-  }
-  50% {
-    box-shadow: 0 0 30px rgba(16, 185, 129, 0.8);
-  }
-}
-
-/* Branch Colors */
-.branch-rose {
-  background: linear-gradient(135deg, rgba(244, 63, 94, 0.8), rgba(190, 24, 93, 0.7), rgba(126, 34, 206, 0.8));
-  border-color: rgba(244, 114, 182, 0.8);
-  box-shadow: 0 20px 40px rgba(244, 63, 94, 0.3);
-}
-
-.branch-blue {
-  background: linear-gradient(135deg, rgba(59, 130, 246, 0.8), rgba(79, 70, 229, 0.7), rgba(126, 34, 206, 0.8));
-  border-color: rgba(96, 165, 250, 0.8);
-  box-shadow: 0 20px 40px rgba(59, 130, 246, 0.3);
-}
-
-.branch-emerald {
-  background: linear-gradient(135deg, rgba(16, 185, 129, 0.8), rgba(6, 182, 212, 0.7), rgba(14, 116, 144, 0.8));
-  border-color: rgba(52, 211, 153, 0.8);
-  box-shadow: 0 20px 40px rgba(16, 185, 129, 0.3);
-}
-
-.branch-amber {
-  background: linear-gradient(135deg, rgba(245, 158, 11, 0.8), rgba(249, 115, 22, 0.7), rgba(220, 38, 38, 0.8));
-  border-color: rgba(251, 191, 36, 0.8);
-  box-shadow: 0 20px 40px rgba(245, 158, 11, 0.3);
-}
-
-.branch-violet {
-  background: linear-gradient(135deg, rgba(139, 92, 246, 0.8), rgba(168, 85, 247, 0.7), rgba(217, 70, 239, 0.8));
-  border-color: rgba(167, 139, 250, 0.8);
-  box-shadow: 0 20px 40px rgba(139, 92, 246, 0.3);
-}
-
-.branch-cyan {
-  background: linear-gradient(135deg, rgba(6, 182, 212, 0.8), rgba(59, 130, 246, 0.7), rgba(79, 70, 229, 0.8));
-  border-color: rgba(34, 211, 238, 0.8);
-  box-shadow: 0 20px 40px rgba(6, 182, 212, 0.3);
-}
-
-.branch-lime {
-  background: linear-gradient(135deg, rgba(132, 204, 22, 0.8), rgba(16, 185, 129, 0.7), rgba(5, 150, 105, 0.8));
-  border-color: rgba(163, 230, 53, 0.8);
-  box-shadow: 0 20px 40px rgba(132, 204, 22, 0.3);
-}
-
-.branch-pink {
-  background: linear-gradient(135deg, rgba(236, 72, 153, 0.8), rgba(244, 63, 94, 0.7), rgba(220, 38, 38, 0.8));
-  border-color: rgba(249, 168, 212, 0.8);
-  box-shadow: 0 20px 40px rgba(236, 72, 153, 0.3);
-}
-
-/* Card Content */
 .member-card::before {
   content: "";
   position: absolute;
@@ -839,38 +648,104 @@ body {
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), transparent, transparent);
 }
 
+/* Branch Color Classes */
+.branch-rose {
+  background: linear-gradient(135deg, rgba(225, 29, 72, 0.8), rgba(190, 24, 93, 0.7), rgba(147, 51, 234, 0.8));
+  border-color: rgba(244, 114, 182, 0.8);
+  box-shadow: 0 8px 32px rgba(225, 29, 72, 0.3);
+}
+
+.branch-blue {
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.8), rgba(79, 70, 229, 0.7), rgba(147, 51, 234, 0.8));
+  border-color: rgba(96, 165, 250, 0.8);
+  box-shadow: 0 8px 32px rgba(37, 99, 235, 0.3);
+}
+
+.branch-emerald {
+  background: linear-gradient(135deg, rgba(5, 150, 105, 0.8), rgba(6, 182, 212, 0.7), rgba(14, 165, 233, 0.8));
+  border-color: rgba(52, 211, 153, 0.8);
+  box-shadow: 0 8px 32px rgba(5, 150, 105, 0.3);
+}
+
+.branch-amber {
+  background: linear-gradient(135deg, rgba(217, 119, 6, 0.8), rgba(245, 101, 101, 0.7), rgba(239, 68, 68, 0.8));
+  border-color: rgba(251, 191, 36, 0.8);
+  box-shadow: 0 8px 32px rgba(217, 119, 6, 0.3);
+}
+
+.branch-violet {
+  background: linear-gradient(135deg, rgba(124, 58, 237, 0.8), rgba(147, 51, 234, 0.7), rgba(219, 39, 119, 0.8));
+  border-color: rgba(167, 139, 250, 0.8);
+  box-shadow: 0 8px 32px rgba(124, 58, 237, 0.3);
+}
+
+.branch-cyan {
+  background: linear-gradient(135deg, rgba(8, 145, 178, 0.8), rgba(37, 99, 235, 0.7), rgba(79, 70, 229, 0.8));
+  border-color: rgba(34, 211, 238, 0.8);
+  box-shadow: 0 8px 32px rgba(8, 145, 178, 0.3);
+}
+
+.branch-lime {
+  background: linear-gradient(135deg, rgba(101, 163, 13, 0.8), rgba(5, 150, 105, 0.7), rgba(6, 182, 212, 0.8));
+  border-color: rgba(163, 230, 53, 0.8);
+  box-shadow: 0 8px 32px rgba(101, 163, 13, 0.3);
+}
+
+.branch-pink {
+  background: linear-gradient(135deg, rgba(219, 39, 119, 0.8), rgba(225, 29, 72, 0.7), rgba(239, 68, 68, 0.8));
+  border-color: rgba(244, 114, 182, 0.8);
+  box-shadow: 0 8px 32px rgba(219, 39, 119, 0.3);
+}
+
+/* Family Head Styling */
+.family-head {
+  border-color: rgba(251, 191, 36, 0.9) !important;
+  box-shadow: 0 8px 32px rgba(251, 191, 36, 0.4) !important;
+  ring: 2px solid rgba(251, 191, 36, 0.5);
+}
+
+/* Deceased Styling */
+.deceased {
+  opacity: 0.9;
+  filter: grayscale(0.2);
+}
+
+/* Search Highlight */
+.search-highlight {
+  border-color: rgba(16, 185, 129, 0.8) !important;
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0.5) !important;
+}
+
+/* Crown Badge */
 .crown-badge {
   position: absolute;
   top: -8px;
   right: -8px;
   z-index: 30;
-}
-
-.crown-badge {
+  padding: 0.5rem;
   background: linear-gradient(45deg, #fbbf24, #f59e0b);
   border-radius: 50%;
-  padding: 0.75rem;
-  box-shadow: 0 10px 25px rgba(251, 191, 36, 0.6);
   border: 2px solid rgba(251, 191, 36, 0.8);
-  position: relative;
+  box-shadow: 0 4px 12px rgba(251, 191, 36, 0.6);
 }
 
-.crown-badge::before {
+.crown-badge::after {
   content: "";
   position: absolute;
   inset: 0;
   background: rgba(251, 191, 36, 0.5);
   border-radius: 50%;
-  filter: blur(10px);
-  animation: pulse 2s infinite;
+  filter: blur(8px);
+  animation: pulse 2s ease-in-out infinite;
   z-index: -1;
 }
 
 .crown-badge i {
   color: #92400e;
-  font-size: 1.25rem;
+  font-size: 1rem;
 }
 
+/* Member Content */
 .member-content {
   padding: 1.5rem;
   position: relative;
@@ -887,8 +762,8 @@ body {
 }
 
 .photo-frame {
-  width: 80px;
-  height: 80px;
+  width: 4rem;
+  height: 4rem;
   border-radius: 50%;
   overflow: hidden;
   border: 3px solid rgba(255, 255, 255, 0.6);
@@ -906,31 +781,23 @@ body {
   transform: scale(1.1);
 }
 
-.photo-frame::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), transparent, rgba(0, 0, 0, 0.3));
-}
-
 .photo-placeholder {
   width: 100%;
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0.3));
   color: white;
   font-weight: 700;
-  font-size: 1.5rem;
-  letter-spacing: 0.05em;
+  font-size: 1rem;
   position: relative;
   z-index: 10;
 }
 
 /* Member Name */
 .member-name {
-  font-size: 1.125rem;
+  font-size: 1rem;
   font-weight: 700;
   text-align: center;
   margin-bottom: 0.75rem;
@@ -941,14 +808,14 @@ body {
   z-index: 10;
 }
 
-.member-name.spouse-name {
-  font-size: 1rem;
+.spouse-name {
+  font-size: 0.875rem;
 }
 
 .deceased-indicator {
   color: #fca5a5;
   margin-left: 0.5rem;
-  font-size: 0.875rem;
+  font-size: 0.75rem;
   font-weight: 500;
 }
 
@@ -962,11 +829,10 @@ body {
   align-items: center;
   justify-content: center;
   margin-bottom: 0.5rem;
-  color: white;
+  padding: 0.375rem 0.5rem;
   background: rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(4px);
   border-radius: 0.5rem;
-  padding: 0.5rem;
   border: 1px solid rgba(255, 255, 255, 0.4);
   position: relative;
   z-index: 10;
@@ -975,30 +841,28 @@ body {
 .detail-item i {
   margin-right: 0.5rem;
   flex-shrink: 0;
-  font-size: 0.875rem;
 }
 
 .detail-item span {
-  font-size: 0.875rem;
-  font-weight: 500;
+  font-size: 0.75rem;
   text-align: center;
-  word-break: break-word;
+  font-weight: 500;
+  color: white;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
-.detail-item.profession i {
-  color: #93c5fd;
+.profession i {
+  color: #60a5fa;
 }
 
-.detail-item.qualification i {
-  color: #86efac;
+.qualification i {
+  color: #34d399;
 }
 
-.detail-item.contact i {
-  color: #c084fc;
-}
-
-.detail-item.contact span {
-  font-family: "Courier New", monospace;
+.contact i {
+  color: #a78bfa;
 }
 
 /* Member Badges */
@@ -1008,8 +872,6 @@ body {
   gap: 0.25rem;
   justify-content: center;
   margin-bottom: 0.75rem;
-  position: relative;
-  z-index: 10;
 }
 
 .badge {
@@ -1018,49 +880,49 @@ body {
   gap: 0.25rem;
   padding: 0.25rem 0.5rem;
   border-radius: 0.375rem;
-  font-size: 0.75rem;
+  font-size: 0.625rem;
   font-weight: 700;
-  border: 1px solid;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-}
-
-.badge i {
-  font-size: 0.75rem;
+  position: relative;
+  z-index: 10;
 }
 
 .badge.head {
   background: linear-gradient(45deg, #fbbf24, #f59e0b);
   color: #92400e;
-  border-color: rgba(251, 191, 36, 0.8);
+  border: 1px solid rgba(251, 191, 36, 0.8);
 }
 
 .badge.married {
   background: linear-gradient(45deg, #ec4899, #be185d);
   color: white;
-  border-color: rgba(236, 72, 153, 0.8);
+  border: 1px solid rgba(244, 114, 182, 0.8);
 }
 
 .badge.children {
   background: linear-gradient(45deg, #10b981, #059669);
   color: white;
-  border-color: rgba(16, 185, 129, 0.8);
+  border: 1px solid rgba(52, 211, 153, 0.8);
+}
+
+.badge i {
+  font-size: 0.5rem;
 }
 
 /* Branch Info */
 .branch-info {
   margin-top: 0.75rem;
-  padding-top: 0.75rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.4);
-  background: rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(10px);
-  border-radius: 0.5rem;
   padding: 0.5rem;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(4px);
+  border-radius: 0.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.4);
   position: relative;
   z-index: 10;
 }
 
 .branch-label {
-  font-size: 0.75rem;
+  font-size: 0.625rem;
   color: rgba(255, 255, 255, 0.9);
   text-align: center;
   font-weight: 500;
@@ -1072,11 +934,13 @@ body {
   font-weight: 500;
   text-align: center;
   margin-top: 0.25rem;
-  font-size: 0.875rem;
-  word-break: break-word;
+  font-size: 0.75rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
-/* Family View */
+/* Family View Styles */
 .family-section {
   margin-bottom: 6rem;
   position: relative;
@@ -1088,21 +952,23 @@ body {
   align-items: center;
   justify-content: center;
   margin-bottom: 3rem;
-  position: relative;
+  gap: 1rem;
 }
 
 .family-title {
   position: relative;
-  margin-bottom: 1rem;
 }
 
 .family-title-content {
-  background: linear-gradient(45deg, rgba(251, 191, 36, 0.3), rgba(249, 115, 22, 0.3));
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem 3rem;
+  background: linear-gradient(135deg, rgba(251, 191, 36, 0.3), rgba(245, 158, 11, 0.3));
   border: 1px solid rgba(251, 191, 36, 0.5);
   border-radius: 1rem;
-  padding: 1.5rem 3rem;
   backdrop-filter: blur(20px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
   position: relative;
   overflow: hidden;
 }
@@ -1114,53 +980,45 @@ body {
   background: linear-gradient(45deg, rgba(255, 255, 255, 0.1), transparent);
 }
 
-.family-title-content {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.family-title-content i {
-  color: #fbbf24;
-  font-size: 2rem;
-}
-
 .family-title-content span {
-  color: white;
   font-weight: 700;
   font-size: 1.5rem;
   letter-spacing: 0.05em;
   position: relative;
-  z-index: 10;
+  z-index: 1;
+  color: white;
+}
+
+.family-title-content i {
+  color: #fbbf24;
+  font-size: 1.5rem;
+  position: relative;
+  z-index: 1;
 }
 
 .family-toggle {
-  background: linear-gradient(45deg, rgba(168, 85, 247, 0.6), rgba(236, 72, 153, 0.6));
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 0.75rem;
-  padding: 0.75rem 1.5rem;
-  backdrop-filter: blur(20px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  transition: all 0.3s ease;
-  cursor: pointer;
-  color: white;
-  font-weight: 500;
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: linear-gradient(135deg, rgba(147, 51, 234, 0.6), rgba(236, 72, 153, 0.6));
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 0.75rem;
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 4px 12px rgba(147, 51, 234, 0.3);
 }
 
 .family-toggle:hover {
-  background: linear-gradient(45deg, rgba(168, 85, 247, 0.8), rgba(236, 72, 153, 0.8));
+  background: linear-gradient(135deg, rgba(147, 51, 234, 0.8), rgba(236, 72, 153, 0.8));
   transform: scale(1.05);
 }
 
-.family-toggle i {
-  font-size: 1rem;
-}
-
 .family-content {
-  animation: fadeIn 0.5s ease-out;
+  animation: fadeIn 0.5s ease-in-out;
 }
 
 @keyframes fadeIn {
@@ -1180,19 +1038,10 @@ body {
   margin-bottom: 4rem;
 }
 
-.family-heads .spouse-pair {
-  gap: 1.5rem;
-}
-
-.family-heads .marriage-line {
-  width: 3rem;
-}
-
-/* Descendants */
 .descendants {
   display: flex;
   flex-direction: column;
-  gap: 4rem;
+  gap: 3rem;
 }
 
 .generation-group {
@@ -1201,16 +1050,15 @@ body {
 
 .generation-group-label {
   display: flex;
-  align-items: center;
   justify-content: center;
   margin-bottom: 2rem;
 }
 
 .generation-group-badge {
-  background: linear-gradient(45deg, rgba(59, 130, 246, 0.3), rgba(168, 85, 247, 0.3));
+  padding: 0.5rem 1.5rem;
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.3), rgba(147, 51, 234, 0.3));
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 0.75rem;
-  padding: 0.5rem 1.5rem;
   backdrop-filter: blur(20px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
@@ -1218,10 +1066,9 @@ body {
 .generation-group-badge span {
   color: white;
   font-weight: 500;
-  font-size: 1.125rem;
+  font-size: 1rem;
 }
 
-/* Collapsed State */
 .collapsed-state {
   display: flex;
   justify-content: center;
@@ -1229,10 +1076,10 @@ body {
 }
 
 .collapsed-info {
+  padding: 1rem 2rem;
   background: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 0.75rem;
-  padding: 1rem 2rem;
   backdrop-filter: blur(20px);
 }
 
@@ -1240,14 +1087,6 @@ body {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-}
-
-.collapsed-info-content i {
-  color: rgba(255, 255, 255, 0.6);
-  font-size: 1.25rem;
-}
-
-.collapsed-info-content span {
   color: rgba(255, 255, 255, 0.8);
   font-weight: 500;
 }
@@ -1262,56 +1101,55 @@ body {
 
 .no-results-content {
   text-align: center;
+  padding: 3rem;
   background: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 1rem;
-  padding: 3rem 2rem;
   backdrop-filter: blur(20px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
 }
 
 .no-results-content i {
-  font-size: 4rem;
-  color: rgba(255, 255, 255, 0.5);
+  font-size: 3rem;
+  color: rgba(255, 255, 255, 0.6);
   margin-bottom: 1rem;
 }
 
 .no-results-content h3 {
   font-size: 1.5rem;
   font-weight: 700;
-  color: white;
   margin-bottom: 0.5rem;
+  color: white;
 }
 
 .no-results-content p {
-  color: rgba(255, 255, 255, 0.7);
-  margin-bottom: 2rem;
-}
-
-.no-results-clear {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.75rem 1.5rem;
-  background: rgba(239, 68, 68, 0.2);
-  border: 1px solid rgba(239, 68, 68, 0.3);
-  border-radius: 0.5rem;
-  color: #ef4444;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.no-results-clear:hover {
-  background: rgba(239, 68, 68, 0.3);
-  transform: scale(1.05);
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 1.5rem;
 }
 
 .no-content {
   text-align: center;
-  color: rgba(255, 255, 255, 0.7);
+  padding: 3rem;
+  color: rgba(255, 255, 255, 0.8);
   font-size: 1.125rem;
-  padding: 4rem 2rem;
+}
+
+/* Animations */
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes ping {
+  75%,
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
 }
 
 /* Responsive Design */
@@ -1324,12 +1162,42 @@ body {
     display: flex;
   }
 
-  .mobile-menu {
-    display: none !important;
+  .logo-container {
+    padding: 1rem;
+    border-radius: 1.5rem;
+  }
+
+  .logo-container i {
+    font-size: 3rem;
+  }
+
+  .spouse-card {
+    width: 300px;
+  }
+
+  .member-card {
+    width: 350px;
+  }
+
+  .photo-frame {
+    width: 5rem;
+    height: 5rem;
+  }
+
+  .member-name {
+    font-size: 1.125rem;
+  }
+
+  .detail-item span {
+    font-size: 0.875rem;
+  }
+
+  .branch-name {
+    font-size: 0.875rem;
   }
 }
 
-@media (max-width: 1023px) {
+@media (max-width: 768px) {
   .header {
     padding: 1rem;
   }
@@ -1338,44 +1206,27 @@ body {
     padding: 1rem;
   }
 
-  .search-info {
-    padding: 1rem;
+  .members-grid {
+    gap: 1rem;
   }
 
   .member-card {
     width: 280px;
   }
 
-  .member-card.spouse-card {
-    width: 240px;
-  }
-
-  .members-grid {
-    gap: 1rem;
+  .spouse-card {
+    width: 260px;
   }
 
   .spouse-pair {
+    flex-direction: column;
     gap: 0.5rem;
   }
 
   .marriage-line {
-    width: 1rem;
-  }
-
-  .family-heads .spouse-pair {
-    gap: 1rem;
-  }
-
-  .family-heads .marriage-line {
-    width: 2rem;
-  }
-
-  .generation-section {
-    margin-bottom: 3rem;
-  }
-
-  .family-section {
-    margin-bottom: 4rem;
+    width: 2px;
+    height: 1rem;
+    background: linear-gradient(180deg, #ec4899, #f97316);
   }
 
   .family-title-content {
@@ -1386,90 +1237,38 @@ body {
     font-size: 1.25rem;
   }
 
-  .family-title-content i {
-    font-size: 1.5rem;
+  .search-input {
+    width: 100%;
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 480px) {
   .member-card {
     width: 260px;
   }
 
-  .member-card.spouse-card {
-    width: 220px;
+  .spouse-card {
+    width: 240px;
   }
 
-  .spouse-pair {
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  .marriage-line {
-    width: 2px;
-    height: 1rem;
-    background: linear-gradient(180deg, #f472b6, #ec4899);
-  }
-
-  .family-heads .spouse-pair {
-    flex-direction: column;
-    gap: 1.5rem;
-  }
-
-  .family-heads .marriage-line {
-    width: 2px;
-    height: 1.5rem;
-    background: linear-gradient(180deg, #f472b6, #ec4899);
+  .member-content {
+    padding: 1rem;
   }
 
   .photo-frame {
-    width: 60px;
-    height: 60px;
-  }
-
-  .photo-placeholder {
-    font-size: 1.25rem;
+    width: 3rem;
+    height: 3rem;
   }
 
   .member-name {
-    font-size: 1rem;
-  }
-
-  .member-name.spouse-name {
     font-size: 0.875rem;
   }
 
-  .detail-item {
-    padding: 0.375rem;
-  }
-
   .detail-item span {
-    font-size: 0.8125rem;
-  }
-
-  .branch-name {
-    font-size: 0.8125rem;
-  }
-
-  .family-title-content {
-    padding: 0.75rem 1.5rem;
+    font-size: 0.625rem;
   }
 
   .family-title-content span {
-    font-size: 1.125rem;
-  }
-
-  .family-title-content i {
-    font-size: 1.25rem;
-  }
-
-  .crown-badge {
-    padding: 0.5rem;
-    top: -6px;
-    right: -6px;
-  }
-
-  .crown-badge i {
     font-size: 1rem;
   }
 }
