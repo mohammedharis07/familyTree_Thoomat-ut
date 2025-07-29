@@ -6,95 +6,66 @@
     <title>Thoomat Family Tree - Digital Heritage</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Background Effects -->
     <div class="background-effects">
         <div class="matrix-grid"></div>
-        <div class="holographic-orbs">
-            <div class="orb orb-1"></div>
-            <div class="orb orb-2"></div>
-            <div class="orb orb-3"></div>
-        </div>
-        <div class="scanning-lines">
-            <div class="scan-line scan-top"></div>
-            <div class="scan-line scan-bottom"></div>
-            <div class="scan-line scan-left"></div>
-            <div class="scan-line scan-right"></div>
-        </div>
+        <div class="holographic-orbs"></div>
+        <div class="scanning-lines"></div>
         <div class="data-particles"></div>
-        <div class="circuit-pattern"></div>
-        <div class="hexagonal-overlay"></div>
     </div>
 
     <!-- Header -->
     <header class="header">
-        <div class="header-container">
-            <!-- Mobile Header -->
-            <div class="mobile-header">
-                <div class="mobile-title">
-                    <div class="logo-container">
-                        <i class="fas fa-tree"></i>
-                    </div>
-                    <div class="title-text">
-                        <h1>THOOMAT FAMILY TREE</h1>
+        <div class="header-content">
+            <div class="logo-section">
+                <div class="logo">
+                    <i class="fas fa-sitemap"></i>
+                </div>
+                <div class="title-section">
+                    <h1 class="main-title">THOOMAT FAMILY TREE</h1>
+                    <div class="subtitle">
+                        <span class="subtitle-item">
+                            <i class="fas fa-database"></i>
+                            Digital Heritage
+                        </span>
+                        <span class="subtitle-divider">•</span>
+                        <span class="subtitle-item">
+                            <i class="fas fa-users"></i>
+                            Connected Generations
+                        </span>
                     </div>
                 </div>
-                <button id="mobile-menu-btn" class="mobile-menu-btn">
-                    <i id="mobile-menu-icon" class="fas fa-bars"></i>
-                </button>
             </div>
 
-            <!-- Desktop Header -->
-            <div class="desktop-header">
-                <div class="header-left">
-                    <div class="logo-container">
-                        <i class="fas fa-tree"></i>
-                        <div class="logo-indicator"></div>
+            <!-- Desktop Controls -->
+            <div class="desktop-controls">
+                <div class="search-container">
+                    <div class="search-wrapper">
+                        <i class="fas fa-search search-icon"></i>
+                        <input type="text" id="search-input" placeholder="Search family members..." class="search-input">
+                        <button id="search-clear" class="search-clear" style="display: none;">
+                            <i class="fas fa-times"></i>
+                        </button>
                     </div>
-                    <div class="title-section">
-                        <h1>THOOMAT FAMILY TREE</h1>
-                        <div class="subtitle">
-                            <div class="subtitle-item">
-                                <i class="fas fa-sparkles"></i>
-                                <span>Digital Heritage</span>
-                            </div>
-                            <div class="subtitle-divider"></div>
-                            <div class="subtitle-item">
-                                <i class="fas fa-network-wired"></i>
-                                <span>Connected Generations</span>
-                            </div>
-                        </div>
-                    </div>
+                    <div id="search-results-count" class="search-results-count" style="display: none;"></div>
                 </div>
 
-                <!-- Desktop Controls -->
-                <div class="header-controls">
-                    <!-- Search Bar -->
-                    <div class="search-container">
-                        <div class="search-input-wrapper">
-                            <i class="fas fa-search search-icon"></i>
-                            <input type="text" id="search-input" placeholder="Search family members..." class="search-input">
-                            <button id="search-clear" class="search-clear" style="display: none;">
-                                <i class="fas fa-times"></i>
-                            </button>
-                        </div>
-                        <div id="search-results-count" class="search-results-count" style="display: none;"></div>
-                    </div>
-
-                    <!-- View Toggle -->
+                <div class="view-controls">
                     <div class="view-toggle">
                         <button class="view-btn active" data-mode="generation">
-                            <i class="fas fa-network-wired"></i>
-                            Generations
+                            <i class="fas fa-layer-group"></i>
+                            <span>Generation View</span>
                         </button>
                         <button class="view-btn" data-mode="family">
-                            <i class="fas fa-tree"></i>
-                            Families
+                            <i class="fas fa-sitemap"></i>
+                            <span>Family View</span>
                         </button>
                     </div>
-
-                    <!-- Expand All Button -->
                     <button id="expand-all-btn" class="expand-all-btn" style="display: none;">
                         <i class="fas fa-eye"></i>
                         <span>Expand All</span>
@@ -102,58 +73,55 @@
                 </div>
             </div>
 
-            <!-- Mobile Menu -->
-            <div id="mobile-menu" class="mobile-menu">
-                <div class="mobile-menu-content">
-                    <!-- Mobile Search -->
-                    <div class="mobile-search">
-                        <div class="search-input-wrapper">
-                            <i class="fas fa-search search-icon"></i>
-                            <input type="text" id="mobile-search-input" placeholder="Search family members..." class="search-input">
-                            <button id="mobile-search-clear" class="search-clear" style="display: none;">
-                                <i class="fas fa-times"></i>
-                            </button>
-                        </div>
-                        <div id="mobile-search-results-count" class="search-results-count" style="display: none;"></div>
-                    </div>
+            <!-- Mobile Menu Button -->
+            <button class="mobile-menu-btn" id="mobile-menu-btn">
+                <i class="fas fa-bars" id="mobile-menu-icon"></i>
+            </button>
+        </div>
 
-                    <!-- Mobile View Toggle -->
-                    <div class="mobile-view-buttons">
-                        <button class="mobile-view-btn active" data-mode="generation">
-                            <i class="fas fa-network-wired"></i>
-                            Generation View
-                        </button>
-                        <button class="mobile-view-btn" data-mode="family">
-                            <i class="fas fa-tree"></i>
-                            Family View
-                        </button>
-                    </div>
-
-                    <!-- Mobile Expand All -->
-                    <button id="mobile-expand-btn" class="mobile-expand-btn" style="display: none;">
-                        <i class="fas fa-eye"></i>
-                        Expand All Families
-                    </button>
-                </div>
+        <!-- Search Info -->
+        <div id="search-info" class="search-info" style="display: none;">
+            <div class="search-info-content">
+                <i class="fas fa-search"></i>
+                <span id="search-info-text"></span>
             </div>
         </div>
     </header>
 
-    <!-- Search Info -->
-    <div id="search-info" class="search-info" style="display: none;">
-        <div class="search-info-content">
-            <i class="fas fa-search"></i>
-            <span id="search-info-text"></span>
-            <button onclick="clearSearch()" class="clear-search-btn">
-                <i class="fas fa-times"></i>
-                Clear Search
-            </button>
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobile-menu">
+        <div class="mobile-menu-content">
+            <div class="mobile-search-container">
+                <div class="mobile-search-wrapper">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="mobile-search-input" placeholder="Search family members...">
+                    <button id="mobile-search-clear" class="mobile-search-clear" style="display: none;">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div id="mobile-search-results-count" class="mobile-search-results-count" style="display: none;"></div>
+            </div>
+
+            <div class="mobile-view-controls">
+                <button class="mobile-view-btn active" data-mode="generation">
+                    <i class="fas fa-layer-group"></i>
+                    Generation View
+                </button>
+                <button class="mobile-view-btn" data-mode="family">
+                    <i class="fas fa-sitemap"></i>
+                    Family View
+                </button>
+                <button id="mobile-expand-btn" class="mobile-expand-btn" style="display: none;">
+                    <i class="fas fa-eye"></i>
+                    Expand All
+                </button>
+            </div>
         </div>
     </div>
 
     <!-- Main Content -->
     <main class="main-content">
-        <div class="content-container">
+        <div class="container">
             <!-- Family Tree Container -->
             <div id="family-tree-container" class="family-tree-container">
                 <!-- Content will be dynamically generated -->
@@ -162,9 +130,11 @@
             <!-- No Results Message -->
             <div id="no-results" class="no-results" style="display: none;">
                 <div class="no-results-content">
-                    <i class="fas fa-search"></i>
+                    <div class="no-results-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
                     <h3>No Results Found</h3>
-                    <p>No family members match your search criteria.</p>
+                    <p>Try adjusting your search terms or browse all family members.</p>
                     <button onclick="clearSearch()" class="clear-search-btn">
                         <i class="fas fa-times"></i>
                         Clear Search
